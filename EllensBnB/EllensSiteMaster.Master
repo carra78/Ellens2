@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="EllensSiteMaster.master.cs" Inherits="EllensBnB.EllensSiteMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+	<link rel ="stylesheet" type="text/css" href="~/Content/Ellen_Styles.css" />
+    <link rel="icon" href="~/Content/caImages/tn/Ellen.jpg" type="image/x-icon" />
+    <link rel="shortcut icon" href="~/Content/caImages/tn/Ellen.jpg" type="image/x-icon" />
+	<!--
+	
+	-->
+	<script type="text/javascript" src="/Scripts/Ellen_JSScript.js"></script>
+	
+	<noscript>Your browser does not support JavaScript!</noscript>
+</head>
+<body>
+	
+    <form id="form1" runat="server">
+		<div id ="wrapper">
+			<header role ="banner" class ="opt6">
+				<h1>Ellen's B&amp;B</h1>
+				<h3>Galway City Guesthouse</h3>
+			</header>
+			<div role="navigation" id="topnav">
+				<asp:Menu ID="Menu1" runat="server" Orientation ="Horizontal" DataSourceID="SiteMapDataSource1" StaticEnableDefaultPopOutImage="False"></asp:Menu>
+				<asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="False" />
+			</div>
+			<div id ="maincontent">
+				 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+			</div>
+			<footer role="contentinfo" id="footer">
+				<p>
+					<img src="/Content/caImages/tn/3stars.jpg" class="ftImg" width="36" height="50" alt="3 stars">&nbsp;&nbsp;
+					<img src="/Content/caImages/tn/free_wifi.png" class="ftImg" width="75" height="38" alt="Free Wifi">&nbsp;&nbsp;
+					<img src="/Content/caImages/tn/failteIreland.png" class="ftImg" width="75" height="38" alt="Failte Ireland">&nbsp;&nbsp;
+					<strong>Tel:+353(0)87 234 5678&nbsp;&nbsp;&nbsp;</strong>12 St Bridgets Terrace, Galway.&nbsp;&nbsp;&nbsp;
+					<em>Copyright &copy; 2018 PCE Consulting. &nbsp;All rights reserved</em>&nbsp;&nbsp;
+                    <a href="../Web.sitemap">Sitemap</a>
+				</p>		
+			</footer>
+		</div> <!-- end of wrapper -->
+		<!--
+		
+		-->
+		<script type="text/javascript" src="/Scripts/Ellen_JSScript1.js"></script>
+	</form>
+</body>
+</html>
