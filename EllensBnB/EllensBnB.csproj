@@ -282,6 +282,7 @@
     <Content Include="Pages\Directions_FAQs.aspx" />
     <Content Include="Pages\GalwayCity.aspx" />
     <Content Include="Pages\GalwayOther.aspx" />
+    <Content Include="Pages\LogInForAdmin.aspx" />
     <Content Include="Pages\Rooms.aspx" />
     <Content Include="Pages\ThingsToDo.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -458,6 +459,13 @@
     </Compile>
     <Compile Include="Pages\GalwayOther.aspx.designer.cs">
       <DependentUpon>GalwayOther.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LogInForAdmin.aspx.cs">
+      <DependentUpon>LogInForAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\LogInForAdmin.aspx.designer.cs">
+      <DependentUpon>LogInForAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Rooms.aspx.cs">
       <DependentUpon>Rooms.aspx</DependentUpon>
