@@ -2,18 +2,20 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-	<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
-    <div role ="main" id="ReportsPage">
-        <asp:SiteMapPath ID="SiteMapPath1" Runat="server"></asp:SiteMapPath>
+	<button onclick="topFunction()" ID="topBtn" title="Go to top">Top</button>
+   
+    <div role ="main" ID="ReportsPage">
+        
         <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
         
             <asp:UpdatePanel ID="Reports" runat="server">
                 <ContentTemplate>
-                    <p>Select reports to run</p>
+                    <asp:SiteMapPath ID="SiteMapPath1" Runat="server"></asp:SiteMapPath>
+                    <p><strong>Select reports to run</strong></p>
                     
-                    <asp:DropDownList ID="drpReportList" AutoPostBack="true" runat="server" OnSelectedIndexChanged="drpReportList_SelectedIndexChanged">
-                        <asp:ListItem Value="Future Reservations"></asp:ListItem>
+                    <asp:DropDownList ID="drpReportList" AutoPostBack="true" runat="server" CssClass="cssDropdown" OnSelectedIndexChanged="drpReportList_SelectedIndexChanged">
+                        <asp:ListItem Value="Future Reservations" ></asp:ListItem>
                         <asp:ListItem Value ="Total Revenue"></asp:ListItem>
                         <asp:ListItem Value ="Unpaid Bookings"></asp:ListItem>
                         <asp:ListItem Value ="Customer List"></asp:ListItem>
@@ -22,12 +24,13 @@
                    
                        <br /> <br />
                        
-                    <div style='overflow-x:scroll;overflow-y:hidden;width:100%'>
+                    <div class="overflow">
                        <!--Future Reservations report-->
                         <asp:SqlDataSource ID="FutureReservations" runat="server" ConnectionString="<%$ ConnectionStrings:EllensBnBConnectionString %>"
                                 SelectCommand="uspGetDatesReservedWithCustomer" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                         <asp:GridView ID="gvFutureReservations" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
                                 DataSourceID="FutureReservations" DataKeyNames="CustomerEmail" Font-Size="Small" PageSize="8">
+                          <PagerStyle CssClass="cssPager" />
                         <Columns>
                             <asp:BoundField DataField="Date" DataFormatString="{0:d}" HeaderText="Date" ReadOnly="True" SortExpression="Date" />
                             <asp:BoundField DataField="BookingID" HeaderText="Booking ID" SortExpression="BookingID" />
@@ -52,13 +55,21 @@
                                 SelectCommand="uspGetTotalRevenueByYear" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                     <asp:GridView ID="gvTotalRevenue" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
                                 DataSourceID="GetTotalRevenue" Font-Size="Small" PageSize="8">
+                       <PagerStyle CssClass="cssPager" />
                         <Columns>
-                            <asp:BoundField DataField="Year" HeaderText="Year" ReadOnly="True" SortExpression="Year" />
-                            <asp:BoundField DataField="RoomName" HeaderText="Room" SortExpression="RoomName">
-                            <ItemStyle Wrap="False" />
+                            <asp:BoundField DataField="Year" HeaderText="Year" ReadOnly="True" SortExpression="Year" >
+                            <HeaderStyle Wrap="False" />
+                            <ItemStyle Width="75px" Wrap="False" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Total Sales" DataFormatString="{0:c2}" HeaderText="Total Sales" ReadOnly="True" SortExpression="Total Sales" />
+                            <asp:BoundField DataField="RoomName" HeaderText="Room" SortExpression="RoomName">
+                            <ItemStyle Wrap="False" Width="150px" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Total Sales" DataFormatString="{0:c2}" HeaderText="Total Sales" ReadOnly="True" SortExpression="Total Sales" >
+                            <ItemStyle Width="150px" Wrap="False" />
+                            </asp:BoundField>
                         </Columns>
+                        <PagerStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="50px" Wrap="False" />
+                        <RowStyle Width="110px" Wrap="False" />
                         </asp:GridView>
 
                     <!--Unpaid report-->
@@ -66,6 +77,7 @@
                                  SelectCommand="uspGetUnpaidBookings" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                     <asp:GridView ID="gvUnpaid" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
                                  DataSourceID="UnpaidBookings" DataKeyNames="CustomerEmail" Font-Size="Small" PageSize="8">
+                        <PagerStyle CssClass="cssPager" />
                         <Columns>
                             <asp:BoundField DataField="Date" DataFormatString="{0:d}" HeaderText="Date" ReadOnly="True" SortExpression="Date" />
                             <asp:BoundField DataField="BookingID" HeaderText="BookingID" SortExpression="BookingID" />
@@ -88,6 +100,7 @@
                                  SelectCommand="uspGetAllCustomers" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                     <asp:GridView ID="gvAllCustomers" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
                                  DataSourceID="AllCustomers" DataKeyNames="CustomerEmail" Font-Size="Small" PageSize="8">
+                        <PagerStyle CssClass="cssPager" />
                         <Columns>
                             <asp:BoundField DataField="CustomerID" HeaderText="Customer ID" InsertVisible="False" ReadOnly="True" SortExpression="CustomerID" />
                             <asp:BoundField DataField="CustomerName" HeaderText="Customer" SortExpression="CustomerName" />
@@ -102,6 +115,7 @@
                                         SelectCommand="uspGetAllBookings" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                         <asp:GridView ID="gvAllBookings" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
                                         DataSourceID="AllBookings" DataKeyNames="CustomerEmail" Font-Size="Small" PageSize="8">
+                            <PagerStyle CssClass="cssPager" />
                             <Columns>
                                 <asp:BoundField DataField="Date" DataFormatString="{0:d}" HeaderText="Date" ReadOnly="True" SortExpression="Date" />
                                 <asp:BoundField DataField="BookingID" HeaderText="BookingID" SortExpression="BookingID" />
