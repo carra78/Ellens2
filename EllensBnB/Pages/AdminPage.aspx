@@ -11,55 +11,118 @@
             <asp:UpdatePanel ID="Reports" runat="server">
                 <ContentTemplate>
                     <p>Select reports to run</p>
-                    <!--<asp:Label ID="ReportsList" runat="server" Text="Reports"></asp:Label>--> &nbsp &nbsp
-                    <asp:DropDownList ID="drpReportsList" runat="server" Width="400px">
-                        <asp:ListItem Value="All bookings in date order"></asp:ListItem>
-                        <asp:ListItem Value ="Future bookings"></asp:ListItem>
-                        <asp:ListItem Value ="Unpaid bookings"></asp:ListItem>
-                        <asp:ListItem Value ="Customer distribution list"></asp:ListItem>
-                        <asp:ListItem Value ="All bookings by customer"></asp:ListItem>
-                    </asp:DropDownList>&nbsp &nbsp
-                        <p>The data grid reports is here. Column headings will come from individual reports, data binding to be set</p>
                     
-                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:EllensBnBConnectionString %>" SelectCommand="uspGetAllBookings" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="CustomerEmail" DataSourceID="SqlDataSource1" Font-Size="Small" AllowPaging="True" AllowSorting="True">
+                    <asp:DropDownList ID="drpReportList" AutoPostBack="true" runat="server" OnSelectedIndexChanged="drpReportList_SelectedIndexChanged">
+                        <asp:ListItem Value="Future Reservations"></asp:ListItem>
+                        <asp:ListItem Value ="Total Revenue"></asp:ListItem>
+                        <asp:ListItem Value ="Unpaid Bookings"></asp:ListItem>
+                        <asp:ListItem Value ="Customer List"></asp:ListItem>
+                        <asp:ListItem Value ="All bookings"></asp:ListItem>
+                    </asp:DropDownList>
+                   
+                       <br /> <br />
+                       
+                    <div style='overflow-x:scroll;overflow-y:hidden;width:100%'>
+                       <!--Future Reservations report-->
+                        <asp:SqlDataSource ID="FutureReservations" runat="server" ConnectionString="<%$ ConnectionStrings:EllensBnBConnectionString %>"
+                                SelectCommand="uspGetDatesReservedWithCustomer" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                        <asp:GridView ID="gvFutureReservations" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
+                                DataSourceID="FutureReservations" DataKeyNames="CustomerEmail" Font-Size="Small" PageSize="8">
+                        <Columns>
+                            <asp:BoundField DataField="Date" DataFormatString="{0:d}" HeaderText="Date" ReadOnly="True" SortExpression="Date" />
+                            <asp:BoundField DataField="BookingID" HeaderText="Booking ID" SortExpression="BookingID" />
+                            <asp:BoundField DataField="DateBookingCreated" DataFormatString="{0:d}" HeaderText="Date Created" SortExpression="DateBookingCreated" />
+                            <asp:BoundField DataField="Paid" HeaderText="Paid" SortExpression="Paid" />
+                            <asp:BoundField DataField="RoomID" HeaderText="Room No" SortExpression="RoomID" />
+                            <asp:BoundField DataField="NumberOfGuests" HeaderText="Number Of Guests" SortExpression="NumberOfGuests" />
+                            <asp:BoundField DataField="RoomRate" DataFormatString="{0:c2}" HeaderText="Room Rate" SortExpression="RoomRate" />
+                            <asp:BoundField DataField="BookingNotes" HeaderText="Notes" SortExpression="BookingNotes" />
+                            <asp:BoundField DataField="RoomName" HeaderText="Room" SortExpression="RoomName">
+                            <ItemStyle Wrap="False" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="CustomerName" HeaderText="Customer" SortExpression="CustomerName" />
+                            <asp:BoundField DataField="CustomerCountry" HeaderText="Country" SortExpression="CustomerCountry" />
+                            <asp:BoundField DataField="CustomerEmail" HeaderText="Email" ReadOnly="True" SortExpression="CustomerEmail" />
+                            <asp:BoundField DataField="CustomerPhone" HeaderText="Phone" SortExpression="CustomerPhone" />
+                        </Columns>
+                        </asp:GridView>
+
+                    <!--Total Revenue report-->
+                    <asp:SqlDataSource ID="GetTotalRevenue" runat="server" ConnectionString="<%$ ConnectionStrings:EllensBnBConnectionString %>"
+                                SelectCommand="uspGetTotalRevenueByYear" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                    <asp:GridView ID="gvTotalRevenue" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
+                                DataSourceID="GetTotalRevenue" Font-Size="Small" PageSize="8">
+                        <Columns>
+                            <asp:BoundField DataField="Year" HeaderText="Year" ReadOnly="True" SortExpression="Year" />
+                            <asp:BoundField DataField="RoomName" HeaderText="Room" SortExpression="RoomName">
+                            <ItemStyle Wrap="False" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Total Sales" DataFormatString="{0:c2}" HeaderText="Total Sales" ReadOnly="True" SortExpression="Total Sales" />
+                        </Columns>
+                        </asp:GridView>
+
+                    <!--Unpaid report-->
+                    <asp:SqlDataSource ID="UnpaidBookings" runat="server" ConnectionString="<%$ ConnectionStrings:EllensBnBConnectionString %>"
+                                 SelectCommand="uspGetUnpaidBookings" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                    <asp:GridView ID="gvUnpaid" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
+                                 DataSourceID="UnpaidBookings" DataKeyNames="CustomerEmail" Font-Size="Small" PageSize="8">
+                        <Columns>
+                            <asp:BoundField DataField="Date" DataFormatString="{0:d}" HeaderText="Date" ReadOnly="True" SortExpression="Date" />
+                            <asp:BoundField DataField="BookingID" HeaderText="BookingID" SortExpression="BookingID" />
+                            <asp:BoundField DataField="DateBookingCreated" DataFormatString="{0:d}" HeaderText="Date Created" SortExpression="DateBookingCreated" />
+                            <asp:BoundField DataField="Paid" HeaderText="Paid" SortExpression="Paid" />
+                            <asp:BoundField DataField="RoomID" HeaderText="Room No" SortExpression="RoomID" />
+                            <asp:BoundField DataField="NumberOfGuests" HeaderText="Number Of Guests" SortExpression="NumberOfGuests" />
+                            <asp:BoundField DataField="RoomRate" DataFormatString="{0:c2}" HeaderText="Room Rate" SortExpression="RoomRate" />
+                            <asp:BoundField DataField="BookingNotes" HeaderText="Notes" SortExpression="BookingNotes" />
+                            <asp:BoundField DataField="RoomName" HeaderText="Room" SortExpression="RoomName" ItemStyle-Wrap="False"/>
+                            <asp:BoundField DataField="CustomerName" HeaderText="Customer" SortExpression="CustomerName" />
+                            <asp:BoundField DataField="CustomerCountry" HeaderText="Country" SortExpression="CustomerCountry" />
+                            <asp:BoundField DataField="CustomerEmail" HeaderText="Email" ReadOnly="True" SortExpression="CustomerEmail" />
+                            <asp:BoundField DataField="CustomerPhone" HeaderText="Phone" SortExpression="CustomerPhone" />
+                        </Columns>
+                    </asp:GridView>
+
+                         <!--Customer listing report-->
+                    <asp:SqlDataSource ID="AllCustomers" runat="server" ConnectionString="<%$ ConnectionStrings:EllensBnBConnectionString %>"
+                                 SelectCommand="uspGetAllCustomers" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                    <asp:GridView ID="gvAllCustomers" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
+                                 DataSourceID="AllCustomers" DataKeyNames="CustomerEmail" Font-Size="Small" PageSize="8">
+                        <Columns>
+                            <asp:BoundField DataField="CustomerID" HeaderText="Customer ID" InsertVisible="False" ReadOnly="True" SortExpression="CustomerID" />
+                            <asp:BoundField DataField="CustomerName" HeaderText="Customer" SortExpression="CustomerName" />
+                            <asp:BoundField DataField="CustomerCountry" HeaderText="Country" SortExpression="CustomerCountry" />
+                            <asp:BoundField DataField="CustomerEmail" HeaderText="Email" ReadOnly="True" SortExpression="CustomerEmail" />
+                            <asp:BoundField DataField="CustomerPhone" HeaderText="Phone" SortExpression="CustomerPhone" />
+                        </Columns>
+                    </asp:GridView>
+
+                           <!--All Bookings report-->
+                        <asp:SqlDataSource ID="AllBookings" runat="server" ConnectionString="<%$ ConnectionStrings:EllensBnBConnectionString %>"
+                                        SelectCommand="uspGetAllBookings" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                        <asp:GridView ID="gvAllBookings" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
+                                        DataSourceID="AllBookings" DataKeyNames="CustomerEmail" Font-Size="Small" PageSize="8">
                             <Columns>
                                 <asp:BoundField DataField="Date" DataFormatString="{0:d}" HeaderText="Date" ReadOnly="True" SortExpression="Date" />
-                                <asp:BoundField DataField="BookingID" HeaderText="Booking ID" SortExpression="BookingID" />
+                                <asp:BoundField DataField="BookingID" HeaderText="BookingID" SortExpression="BookingID" />
                                 <asp:BoundField DataField="DateBookingCreated" DataFormatString="{0:d}" HeaderText="Date Created" SortExpression="DateBookingCreated" />
                                 <asp:BoundField DataField="Paid" HeaderText="Paid" SortExpression="Paid" />
-                                <asp:BoundField DataField="RoomID" HeaderText="Room No." SortExpression="RoomID" />
+                                <asp:BoundField DataField="RoomID" HeaderText="Room No" SortExpression="RoomID" />
                                 <asp:BoundField DataField="NumberOfGuests" HeaderText="Number Of Guests" SortExpression="NumberOfGuests" />
-                                <asp:BoundField DataField="RoomRate" HeaderText="Room Rate" SortExpression="RoomRate" DataFormatString="{0:c2}" />
-                                <asp:BoundField DataField="BookingNotes" HeaderText="Notes" SortExpression="BookingNotes" />
-                                <asp:BoundField DataField="RoomName" HeaderText="Room" SortExpression="RoomName" />
+                                <asp:BoundField DataField="RoomRate" HeaderText="Room Rate" DataFormatString="{0:c2}" SortExpression="RoomRate" />
+                                <asp:BoundField DataField="BookingNotes" HeaderText="Notes" SortExpression="BookingNotes" ItemStyle-Width="200" ItemStyle-Wrap="False" />
+                                <asp:BoundField DataField="RoomName" HeaderText="Room" SortExpression="RoomName" ItemStyle-Wrap="False"/>
                                 <asp:BoundField DataField="CustomerName" HeaderText="Customer" SortExpression="CustomerName" />
                                 <asp:BoundField DataField="CustomerCountry" HeaderText="Country" SortExpression="CustomerCountry" />
                                 <asp:BoundField DataField="CustomerEmail" HeaderText="Email" ReadOnly="True" SortExpression="CustomerEmail" />
                                 <asp:BoundField DataField="CustomerPhone" HeaderText="Phone" SortExpression="CustomerPhone" />
                             </Columns>
-                            </asp:GridView>
-                            
-                            
-                    <!-- Columns to be defined.  8 Options for field types - some below -->
-                    
-                    <%--<asp:GridView ID="gvReports" runat="server" AutoGenerateColumns ="false">
-                        <Columns>                            
-                            <asp:Boundfield HeaderText ="Date Selected"/>
-                            <asp:BoundField HeaderText ="Room 1" />
-                            <asp:BoundField HeaderText ="Room 2" />
-                            <asp:Templatefield></asp:Templatefield>
-                            <asp:HyperLinkField />
-                            <asp:CommandField />
-                            <asp:CheckBoxField />
-                        </Columns>
-                        
-                    </asp:GridView> --%>
-    
+                        </asp:GridView>     
+                       
+                    </div><!--end of scrolling style for gridviews-->
                 </ContentTemplate>                
 
             </asp:UpdatePanel>
-
 
     </div><!--end of reports-->
 
