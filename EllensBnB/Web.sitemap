@@ -10,6 +10,7 @@
     </siteMapNode>
     <siteMapNode url="~/Pages/Directions_FAQs" title="Directions &amp; FAQs"  description="How to find us and other useful information" />
     <siteMapNode url="~/Pages/ContactUs" title="Contact Us"  description="Make a booking" />
+    <siteMapNode url="~/Pages/AdminPage" title="Admin"  description="Login required" />
   </siteMapNode>
   
 </siteMap>

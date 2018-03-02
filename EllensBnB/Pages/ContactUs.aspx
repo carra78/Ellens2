@@ -14,10 +14,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 	<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
     <div role ="main" id="leftcol">
-        <asp:SiteMapPath ID="SiteMapPath1" Runat="server"></asp:SiteMapPath>
+        <asp:SiteMapPath ID="SiteMapPath1" Runat="server"></asp:SiteMapPath><br />
 		<div class="bookingOption">
-			<asp:Button ID="MakeNewReservation" runat="server" Text="Make New Reservation" CssClass="bookingOption" OnClick="MakeNewReservation_Click" />
-			<asp:Button ID="UpdateExistingReservation" runat="server" Text="Update Existing Reservation" CssClass ="bookingOption" OnClick="UpdateExistingReservation_Click"/>
+			<asp:Button ID="MakeNewReservation" runat="server" Text="Make New Reservation" CssClass="bookingOption" Style="margin-right:100px" OnClick="MakeNewReservation_Click" />
+			<asp:Button ID="UpdateExistingReservation" runat="server" Text="Update Existing Reservation" CssClass ="bookingOption" Style="margin-left:100px"  OnClick="UpdateExistingReservation_Click"/>
 			
 		</div>
 
@@ -32,10 +32,10 @@
 
 			<asp:UpdatePanel ID="UpdatePanelCalendar" runat="server" UpdateMode="Conditional">
 				<ContentTemplate>
-					<p class = "bookingOption">Please select dates to check room availibility</p>					
+					<p class="bookingOption"><strong>Please select dates to check room availibility</strong></p>					
 					<asp:Calendar ID="EllensWebCalendar" runat="server" OnDayRender="EllensCalendar_DayRender" OnSelectionChanged="EllensCalendar_SelectionChanged" Width="835px"></asp:Calendar>
 					<asp:ListBox runat="server" ID="lstUserSelectedDates" Width="260px"></asp:ListBox>
-					&nbsp;
+					
 					<asp:Button runat="server" Text="Select Dates" ID="btnSelectDates" OnClick="btnSelectDates_Click" />
 					&nbsp;&nbsp;
 					<asp:Button runat="server" Text="Clear Dates" ID="btnClearDates" OnClick="btnClearDates_Click" />

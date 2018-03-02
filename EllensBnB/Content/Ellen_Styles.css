@@ -719,31 +719,15 @@ input[type=date],select, textarea
     }
 }
 
-.bookingOption {
-    margin: 0px 0px 10px 0px;
-    float: left;
-    position: relative;
-}
-
-input[type=submit] {
-    background-color: #4d88ff;
-    color: white;
-    padding: 6px 6px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 5px 5px 5px 0px;
-    font-size: 100%;
-    border: 1px solid #ffffff;
-    box-shadow: 1px 1px 1px #000066;
-}
 
 
 
+/*AdminPage Css*/
 div#ReportsPage {
     margin: 10px 5px 5px 20px;
 }
 
-    div#ReportsPage p {
+div#ReportsPage p {
         font-size: 18px;
     }
 
@@ -752,8 +736,6 @@ div.overflow {
     overflow-y: hidden;
     width: 100%;
 }
-
-
 
 .cssPager span {
     background-color: #4d88ff;
@@ -783,4 +765,23 @@ div.overflow {
     min-width: 160px;
     box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
+}
+
+/*ContactUs Css*/
+.bookingOption {
+    margin: 0px 0px 10px 0px;
+    float: left;
+    position: relative;
+}
+
+input[type=submit] {
+    background-color: #4d88ff;
+    color: white;
+    padding: 6px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px 10px 5px 0px;
+    font-size: 100%;
+    border: 1px solid #ffffff;
+    box-shadow: 1px 1px 1px #000066;
 }
