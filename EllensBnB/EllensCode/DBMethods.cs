@@ -13,9 +13,6 @@ namespace EllensBnB.EllensCode
         /* New connection string code - linking directly to Web.config file*/
         static string connectionString = ConfigurationManager.ConnectionStrings["EllensBnBConnectionString"].ConnectionString;
 
-        /*old connectionstring*/
-        //static string connectionString = "Server = tcp:karensserver.database.windows.net,1433; Initial Catalog = EllensBnB; Persist Security Info = False; User ID = ellenadminlogin; Password =PCEc2018; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30;";
-        
         //static SqlConnection dbConnection = new SqlConnection(connectionString);
 
 		//calls uspGetDatesReserved - no parameters required.  Returns all booked dates and associated roomID
