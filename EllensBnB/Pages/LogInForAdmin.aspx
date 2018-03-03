@@ -2,15 +2,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <asp:SiteMapPath ID="SiteMapPath1" Runat="server"></asp:SiteMapPath>
-
+     
+    <div class="login">
+    <asp:SiteMapPath ID="SiteMapPath1" Runat="server"></asp:SiteMapPath>
+    <p><strong>Enter login details to access Reports</strong></p>
     <p>
-        <br />
-        <asp:Label ID="lblUserName" runat="server" Text="UserName:"></asp:Label>
+       
+        <asp:Label ID="lblUserName" runat="server" Text="UserName:"></asp:Label>&nbsp;
         <asp:TextBox ID="txtUserName" runat="server"></asp:TextBox>
     </p>
     <p>
-        <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
+        <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
     </p>
     <p>
@@ -19,12 +21,9 @@
     <p>
         <asp:Label ID="lblLogInStatus" runat="server" Text="LoginStatus: "></asp:Label>
     </p>
-    <p>
-        &nbsp;</p>
-    <p>
-        &nbsp;</p>
-    <p>
-    </p>
+    
+    
+        </div><!--end of login Css Class"-->
 
 
 </asp:Content>

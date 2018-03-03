@@ -785,3 +785,9 @@ input[type=submit] {
     border: 1px solid #ffffff;
     box-shadow: 1px 1px 1px #000066;
 }
+
+/*Login Css*/
+div.login
+{
+    margin: 10px 10px 10px 10px;
+}

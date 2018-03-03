@@ -37,7 +37,7 @@ namespace EllensBnB.Pages
             }
             else
             {
-                lblLogInStatus.Text = "INVALID LogIn Details";
+                lblLogInStatus.Text = "Invalid Login Details";
                 con.Close();
             }
         }
