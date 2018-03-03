@@ -12,16 +12,18 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 	<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
-	<h2>Retrieve Existing Booking Details</h2>
+    <div class="ExistingBooking">
+	<p><strong>Retrieve Existing Booking Details</strong></p>
+     
 	<asp:Label ID="Label1" runat="server" Text="Email"></asp:Label> &nbsp &nbsp
 	<asp:TextBox ID="txtEmail" runat="server"></asp:TextBox> &nbsp &nbsp &nbsp &nbsp
-
+    
 	<asp:Label ID="Label2" runat="server" Text="BookingID"></asp:Label> &nbsp &nbsp
 	<asp:TextBox ID="txtBookingID" runat="server"></asp:TextBox>
-
+   
+    <p>
 	<asp:Button ID="btnRetrieveBooking" runat="server" Text="Retrieve Booking" OnClick="btnRetrieveBooking_Click" />
-
+     </p>
 	<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
 		<ContentTemplate>
 			<p id="RetrieveError" runat="server">
@@ -35,8 +37,9 @@
 				Guest Country: &nbsp &nbsp<asp:Label runat="server" ID ="lblRetrieveCountry"></asp:Label> <br />
 				Guest Phone: &nbsp &nbsp<asp:Label runat="server" ID="lblRetrievePhone"></asp:Label> <br />
 				BookingNotes:&nbsp &nbsp <asp:Label runat="server" ID="lblRetrieveBookingNotes"></asp:Label> <br />
-			</p>
-			<asp:GridView ID="gvRetrieveBooking" runat="server" AutoGenerateColumns ="false">
+			
+                
+			<asp:GridView ID="gvRetrieveBooking" runat="server" CssClass="RetrieveBooking" AutoGenerateColumns ="false">
 				<Columns>
 					<asp:BoundField DataField ="UserDate" HeaderText="Reservation Date" DataFormatString="{0:d}" />
 					<asp:BoundField DataField="RoomName" HeaderText="Room Reserved" />
@@ -45,6 +48,7 @@
 
 				</Columns>
 			</asp:GridView>
+            </p>
 		</ContentTemplate>
 		<Triggers>
 			<asp:AsyncPostBackTrigger ControlID ="btnRetrieveBooking" EventName="Click" />
@@ -53,7 +57,7 @@
 
 	</asp:UpdatePanel>
 
-
+    </div><!--End of existingbooking class-->
 
 
 </asp:Content>

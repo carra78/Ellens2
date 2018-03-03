@@ -791,3 +791,18 @@ div.login
 {
     margin: 10px 10px 10px 10px;
 }
+
+/*Existing Booking Css*/
+div.ExistingBooking {
+    margin: 10px 10px 10px 100px;
+
+}
+div#ContentPlaceHolder1_UpdatePanel1 {
+    display:flex;
+    float:left;
+}
+.RetrieveBooking
+{
+    margin:20px 0px 0px 40px;
+}
+
