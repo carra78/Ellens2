@@ -66,7 +66,7 @@ namespace EllensBnB.Pages
 
 		protected void UpdateExistingReservation_Click(object sender, EventArgs e)
 		{
-			//use if pages on different servers.  Used here as server redirect not calling the right page
+			//use if pages on different servers.  Used here as server redirect not calling the right page.
 			Response.Redirect("ExistingBooking.aspx");
 			//use if pages on the same server
 			//Server.Transfer("ExistingBooking.aspx"); 
