@@ -11,7 +11,7 @@ namespace EllensBnB
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            //this is to check that this page has been set as the default"
+            //this is to check that this page has been set as the default ."
 		}
 	}
 }
