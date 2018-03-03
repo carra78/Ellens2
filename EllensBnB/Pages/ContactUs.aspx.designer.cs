@@ -10,7 +10,7 @@
 namespace EllensBnB.Pages {
     
     
-    public partial class ContactUs1 {
+    public partial class ContactUs3 {
         
         /// <summary>
         /// SiteMapPath1 control.
@@ -31,13 +31,13 @@ namespace EllensBnB.Pages {
         protected global::System.Web.UI.WebControls.Button MakeNewReservation;
         
         /// <summary>
-        /// UpdateExistingReservation control.
+        /// btnExistingBookingASP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UpdateExistingReservation;
+        protected global::System.Web.UI.WebControls.Button btnExistingBookingASP;
         
         /// <summary>
         /// ScriptManager1 control.
@@ -103,6 +103,15 @@ namespace EllensBnB.Pages {
         protected global::System.Web.UI.WebControls.Button CheckAvailabilitySelectedDates;
         
         /// <summary>
+        /// NoAvailability control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NoAvailability;
+        
+        /// <summary>
         /// UpdatePanelReturnAvailability control.
         /// </summary>
         /// <remarks>
@@ -130,60 +139,6 @@ namespace EllensBnB.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtCustomerBookingNotes;
         
         /// <summary>
-        /// lblCustomerEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCustomerEmail;
-        
-        /// <summary>
-        /// txtCustomerEmail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCustomerEmail;
-        
-        /// <summary>
-        /// ReserveSelectedRooms control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ReserveSelectedRooms;
-        
-        /// <summary>
-        /// nameRequiredFieldValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator nameRequiredFieldValidator;
-        
-        /// <summary>
-        /// emailRegularExpressionValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator emailRegularExpressionValidator;
-        
-        /// <summary>
-        /// GordTestLabelRESERVE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label GordTestLabelRESERVE;
-        
-        /// <summary>
         /// UpdatePanelRegisterNewCustomer control.
         /// </summary>
         /// <remarks>
@@ -193,13 +148,40 @@ namespace EllensBnB.Pages {
         protected global::System.Web.UI.UpdatePanel UpdatePanelRegisterNewCustomer;
         
         /// <summary>
-        /// lblEnteredCustomerEmail control.
+        /// lblEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEnteredCustomerEmail;
+        protected global::System.Web.UI.WebControls.Label lblEmail;
+        
+        /// <summary>
+        /// txtEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        
+        /// <summary>
+        /// btnCheckExisting control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCheckExisting;
+        
+        /// <summary>
+        /// NotExistingCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NotExistingCustomer;
         
         /// <summary>
         /// lblCustomerName control.
@@ -220,15 +202,6 @@ namespace EllensBnB.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtCustomerName;
         
         /// <summary>
-        /// RequiredFieldValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
         /// lblCustomerPhone control.
         /// </summary>
         /// <remarks>
@@ -245,24 +218,6 @@ namespace EllensBnB.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCustomerPhone;
-        
-        /// <summary>
-        /// RequiredFieldValidator2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
-        /// <summary>
-        /// GordTestLabelNewCustomer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label GordTestLabelNewCustomer;
         
         /// <summary>
         /// lblCustomerCountry control.
@@ -283,13 +238,22 @@ namespace EllensBnB.Pages {
         protected global::System.Web.UI.WebControls.DropDownList ddlCountry;
         
         /// <summary>
-        /// CreateNewAccount control.
+        /// MakeBooking control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CreateNewAccount;
+        protected global::System.Web.UI.WebControls.Button MakeBooking;
+        
+        /// <summary>
+        /// NothingSelected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NothingSelected;
         
         /// <summary>
         /// UpdatePanelBookingConfirmation control.

@@ -62,6 +62,7 @@ namespace EllensBnB.EllensCode
 					BookingElement b = new BookingElement();
 					b.UserDate = date.Date;
 					b.RoomID = r.RoomID;
+					b.RoomName = r.RoomName;
 					b.MaxCapacity = r.MaxCapacity; //added for gridview drop down
 					bookingElement.Add(b);
 
