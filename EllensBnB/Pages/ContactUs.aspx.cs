@@ -34,13 +34,6 @@ namespace EllensBnB.Pages
 			//UpdatePanelRegisterNewCustomer.Visible = false;
 			//UpdatePanelBookingConfirmation.Visible = false;
 
-			lblRetrieveName.Visible = false;
-			lblRetrieveCountry.Visible = false;
-			lblRetrievePhone.Visible = false;
-			lblRetrieveBookingNotes.Visible = false;
-
-
-
 		}
 
 
@@ -68,12 +61,15 @@ namespace EllensBnB.Pages
 
         protected void MakeNewReservation_Click(object sender, EventArgs e)
 		{
-
+			
 		}
 
 		protected void UpdateExistingReservation_Click(object sender, EventArgs e)
 		{
-
+			//use if pages on different servers.  Used here as server redirect not calling the right page
+			Response.Redirect("ExistingBooking.aspx");
+			//use if pages on the same server
+			//Server.Transfer("ExistingBooking.aspx"); 
 		}
 
 		//List of dates that gets passed to lstDisplay on Contact
@@ -269,29 +265,6 @@ namespace EllensBnB.Pages
 
 		}
 
-		protected void btnRetrieveBooking_Click(object sender, EventArgs e)
-		{
-			if (IsPostBack)
-			{
-				lblRetrieveName.Visible = false;
-				lblRetrieveCountry.Visible = false;
-				lblRetrievePhone.Visible = false;
-				lblRetrieveBookingNotes.Visible = false;
-				string email = txtRetrieveBookingEmail.Text;
-				string id = txtRetrieveBookingID.Text;
-				List<BookingElement> booking = BookingElement.RetrieveBookingDetails(email, id);
-				lblRetrieveName.Text = booking[0].CustomerName;
-				lblRetrieveCountry.Text = booking[0].CustomerCountry;
-				lblRetrievePhone.Text = booking[0].CustomerPhone;
-				lblRetrieveBookingNotes.Text = booking[0].BookingNotes;
-				lblRetrieveName.Visible = true;
-				lblRetrieveCountry.Visible = true;
-				lblRetrievePhone.Visible = true;
-				lblRetrieveBookingNotes.Visible = true;
-				gvRetrieveBooking.DataSource = dsRetrieveBooking.Select();
-				gvRetrieveBooking.DataBind();
-			}
-
-		}
+		
 	}
 }

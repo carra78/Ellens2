@@ -17,7 +17,8 @@
         <asp:SiteMapPath ID="SiteMapPath1" Runat="server"></asp:SiteMapPath><br />
 		<div class="bookingOption">
 			<asp:Button ID="MakeNewReservation" runat="server" Text="Make New Reservation" CssClass="bookingOption" Style="margin-right:100px" OnClick="MakeNewReservation_Click" />
-			<asp:Button ID="UpdateExistingReservation" runat="server" Text="Update Existing Reservation" CssClass ="bookingOption" Style="margin-left:100px"  OnClick="UpdateExistingReservation_Click"/>
+			<asp:Button ID="UpdateExistingReservation" runat="server" Text="Retrieve Existing Reservation"
+				CssClass ="bookingOption" Style="margin-left:100px"  OnClick="UpdateExistingReservation_Click"/>
 			
 		</div>
 
@@ -155,40 +156,6 @@
 				</ContentTemplate>
 
 			</asp:UpdatePanel> 
-
-			<asp:UpdatePanel ID ="UpdatePanelRetrieveBooking" runat="server">
-				<ContentTemplate>
-					<asp:Label ID="lblRetrieveBookingEmail" runat="server" Text="Email"></asp:Label>
-					&nbsp;&nbsp;<asp:TextBox ID="txtRetrieveBookingEmail" runat="server"></asp:TextBox>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<asp:Label ID="lblRetrieveBookingID" runat="server" Text="BookingID"></asp:Label>
-					&nbsp;
-					<asp:TextBox ID="txtRetrieveBookingID" runat="server"></asp:TextBox>
-					&nbsp;&nbsp;
-					<asp:Button ID="btnRetrieveBooking" runat="server" Text="Retrieve Booking" OnClick="btnRetrieveBooking_Click" />
-					<p>Reservation information: <br />
-						Guest Name: <asp:Label runat="server" ID="lblRetrieveName"></asp:Label>
-						<br />
-						Guest Country: <asp:Label runat="server" ID ="lblRetrieveCountry"></asp:Label>
-						<br />
-						Guest Phone: <asp:Label runat="server" ID="lblRetrievePhone"></asp:Label>
-						<br />
-						BookingNotes: <asp:Label runat="server" ID="lblRetrieveBookingNotes"></asp:Label>
-						<br />
-					</p>
-					<asp:GridView ID="gvRetrieveBooking" runat="server" AutoGenerateColumns="False">
-						
-					</asp:GridView>
-					<asp:ObjectDataSource ID="dsRetrieveBooking" runat="server" SelectMethod="RetrieveBookingDetails" TypeName="EllensBnB.EllensCode.BookingElement">
-						<SelectParameters>
-							<asp:FormParameter FormField="txtRetrieveBookingEmail" Name="email" Type="String" />
-							<asp:FormParameter FormField="txtRetrieveBookingID" Name="bookingID" Type="String" />
-						</SelectParameters>
-					</asp:ObjectDataSource>
-				</ContentTemplate>
-
-			</asp:UpdatePanel>
-
 
 		</div>
 		

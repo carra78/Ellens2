@@ -279,6 +279,7 @@
     <Content Include="Pages\Default.aspx" />
     <Content Include="Pages\DummyContactUs.aspx" />
     <Content Include="Pages\Directions_FAQs.aspx" />
+    <Content Include="Pages\ExistingBooking.aspx" />
     <Content Include="Pages\GalwayCity.aspx" />
     <Content Include="Pages\GalwayOther.aspx" />
     <Content Include="Pages\LogInForAdmin.aspx" />
@@ -437,6 +438,13 @@
     </Compile>
     <Compile Include="Pages\Directions_FAQs.aspx.designer.cs">
       <DependentUpon>Directions_FAQs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ExistingBooking.aspx.cs">
+      <DependentUpon>ExistingBooking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ExistingBooking.aspx.designer.cs">
+      <DependentUpon>ExistingBooking.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\GalwayCity.aspx.cs">
       <DependentUpon>GalwayCity.aspx</DependentUpon>
