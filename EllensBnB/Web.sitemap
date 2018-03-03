@@ -12,5 +12,5 @@
     <siteMapNode url="~/Pages/ContactUs" title="Contact Us"  description="Make a booking" />
     <siteMapNode url="~/Pages/AdminPage" title="Admin"  description="Login required" />
   </siteMapNode>
-  
+
 </siteMap>
