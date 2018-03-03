@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-  <siteMapNode url="~/Default" title="Home Page"  description="Home Page">
+  <siteMapNode url="~/Pages/" title="Home Page"  description="Home Page">
     <siteMapNode url="~/Pages/Default" title="Home Page"  description="Home Page" />
     <siteMapNode url="~/Pages/AboutUs" title="About Us"  description="General information about Ellen's B &amp;B" />
     <siteMapNode url="~/Pages/Rooms" title="Rooms"  description="Information about the size, price and amenities on offer in bedrooms" />
@@ -10,7 +10,7 @@
     </siteMapNode>
     <siteMapNode url="~/Pages/Directions_FAQs" title="Directions &amp; FAQs"  description="How to find us and other useful information" />
     <siteMapNode url="~/Pages/ContactUs" title="Contact Us"  description="Make a booking" />
-    <siteMapNode url="~/Pages/AdminPage" title="Admin"  description="Login required" />
+    <siteMapNode url="~/Pages/LogInForAdmin" title="Login"  description="Login required for Reports" />
   </siteMapNode>
 
 </siteMap>

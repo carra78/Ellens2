@@ -11,7 +11,7 @@
         
             <asp:UpdatePanel ID="Reports" runat="server">
                 <ContentTemplate>
-                    <asp:SiteMapPath ID="SiteMapPath1" Runat="server"></asp:SiteMapPath>
+                   
                     <p><strong>Select reports to run</strong></p>
                     
                     <asp:DropDownList ID="drpReportList" AutoPostBack="true" runat="server" CssClass="cssDropdown" OnSelectedIndexChanged="drpReportList_SelectedIndexChanged">
