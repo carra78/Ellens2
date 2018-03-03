@@ -25,6 +25,7 @@ namespace EllensBnB.Pages
 		{
 			try
 			{
+				RetrieveError.Visible = false;
 				string email = txtEmail.Text.ToString(); //TODO - make all input lower case for pushing to database
 				int bookingID = Convert.ToInt32(txtBookingID.Text);
 				List<BookingElement> bookingInfo = DBMethods.RetrieveExistingBooking(email, bookingID);
@@ -47,7 +48,8 @@ namespace EllensBnB.Pages
 				//clear input boxes
 				txtEmail.Text = string.Empty;
 				txtBookingID.Text = string.Empty;
-
+				inputFields.Update();
+				
 
 			}
 			catch (Exception)

@@ -12,18 +12,25 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 	<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
     <div class="ExistingBooking">
-	<p><strong>Retrieve Existing Booking Details</strong></p>
+		<asp:UpdatePanel ID ="inputFields" runat ="server" UpdateMode="Conditional">
+			<ContentTemplate>
+				<p><strong>Retrieve Existing Booking Details</strong></p>
      
-	<asp:Label ID="Label1" runat="server" Text="Email"></asp:Label> &nbsp &nbsp
-	<asp:TextBox ID="txtEmail" runat="server"></asp:TextBox> &nbsp &nbsp &nbsp &nbsp
+				<asp:Label ID="Label1" runat="server" Text="Email"></asp:Label> &nbsp &nbsp
+				<asp:TextBox ID="txtEmail" runat="server"></asp:TextBox> &nbsp &nbsp &nbsp &nbsp
     
-	<asp:Label ID="Label2" runat="server" Text="BookingID"></asp:Label> &nbsp &nbsp
-	<asp:TextBox ID="txtBookingID" runat="server"></asp:TextBox>
+				<asp:Label ID="Label2" runat="server" Text="BookingID"></asp:Label> &nbsp &nbsp
+				<asp:TextBox ID="txtBookingID" runat="server"></asp:TextBox>
    
-    <p>
-	<asp:Button ID="btnRetrieveBooking" runat="server" Text="Retrieve Booking" OnClick="btnRetrieveBooking_Click" />
-     </p>
+				<p>
+					<asp:Button ID="btnRetrieveBooking" runat="server" Text="Retrieve Booking" OnClick="btnRetrieveBooking_Click" />
+				 </p>
+
+			</ContentTemplate>
+		</asp:UpdatePanel>
+	
 	<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
 		<ContentTemplate>
 			<p id="RetrieveError" runat="server">
@@ -41,7 +48,7 @@
                 
 			<asp:GridView ID="gvRetrieveBooking" runat="server" CssClass="RetrieveBooking" AutoGenerateColumns ="false">
 				<Columns>
-					<asp:BoundField DataField ="UserDate" HeaderText="Reservation Date" DataFormatString="{0:d}" />
+					<asp:BoundField DataField ="ReservationDate" HeaderText="Reservation Date" DataFormatString="{0:d}" />
 					<asp:BoundField DataField="RoomName" HeaderText="Room Reserved" />
 					<asp:BoundField DataField="NumberOfGuests" HeaderText="No of Guests" />
 					<asp:BoundField DataField="RoomRate" HeaderText="Room Rate" DataFormatString="{0:c}" />
