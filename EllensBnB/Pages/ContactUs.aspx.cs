@@ -211,14 +211,19 @@ namespace EllensBnB.Pages
 				foreach (GridViewRow row in gvAvailability.Rows)
 				{
 					CheckBox cb = (CheckBox)row.FindControl("cbxUserSelection");
-					if (cb != null && cb.Checked)
+					DropDownList dl = (DropDownList)row.FindControl("ddlUserGuests");
+					if (cb != null && cb.Checked && Convert.ToInt32(dl.SelectedItem.Text) != 0)
 					{
 						BookingElement b = new BookingElement();
 						b.ReservationDate = Convert.ToDateTime(gvAvailability.Rows[row.RowIndex].Cells[0].Text);
 						b.RoomID = Convert.ToInt32(gvAvailability.Rows[row.RowIndex].Cells[1].Text);
-						DropDownList dl = (DropDownList)row.FindControl("ddlUserGuests");
+
 						b.NumberOfGuests = Convert.ToInt32(dl.SelectedItem.Text);
 						userSelectedBookingElements.Add(b);
+					}
+					else
+					{
+						NothingSelected.Visible = true;
 					}
 				}
 

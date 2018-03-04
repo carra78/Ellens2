@@ -142,7 +142,7 @@
 					<asp:Button ID="MakeBooking" runat="server" Text="Make Booking" 
 						CssClass ="hidden" OnClick="MakeBooking_Click" 
 						ValidationGroup ="CustomerDetails" />
-					<p id ="NothingSelected" runat="server" visible="false">No dates or rooms selected - please try again</p>
+					<p id ="NothingSelected" runat="server" visible="false">Missing booking information - please try again</p>
 				</ContentTemplate>
 
 			</asp:UpdatePanel>
