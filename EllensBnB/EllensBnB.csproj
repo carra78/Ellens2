@@ -272,6 +272,8 @@
     <Content Include="bin\roslyn\vbc.exe.config" />
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <None Include="Properties\PublishProfiles\Ellens2 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Ellens2 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Pages\AdminPage.aspx" />
     <Content Include="Pages\BookingConfirm.aspx" />
