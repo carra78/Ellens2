@@ -88,6 +88,11 @@ namespace EllensBnB.Pages
 			Session["SelectedDates"] = null;
 			userSelectedDatesForDatabaseQuery.Clear();
 			NoAvailability.Visible = false;
+
+			//reset gridview for availability to emply and clear
+			gvAvailability.DataSource = null;
+			gvAvailability.DataBind();
+			UpdatePanelReturnAvailability.Update();
 		}
 
 		protected void CheckAvailabilitySelectedDates_Click(object sender, EventArgs e)
