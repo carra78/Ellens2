@@ -10,10 +10,15 @@
 	b&amp;bs near salthill galway,award winning,tripadvisor 2015,tripadvisor 2016">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style type="text/css">
-	  .hiddencol
-	  {
-		display: none;
-	  }
+		.hidden
+		{
+			display: none;
+		}
+
+		.show 
+		{
+			display:block;
+		}
 	</style>
 </asp:Content>
 
@@ -63,7 +68,7 @@
 						<Columns>
 							<asp:BoundField DataField="UserDate" HeaderText="Your selected dates"
 								DataFormatString ="{0:d}" />
-							<asp:BoundField DataField="RoomID" HeaderText="RoomID" ItemStyle-CssClass="hiddencol" HeaderStyle-CssClass="hiddencol" />
+							<asp:BoundField DataField="RoomID" HeaderText="RoomID" ItemStyle-CssClass="hidden" HeaderStyle-CssClass="hidden" />
 							<asp:BoundField DataField="RoomName" HeaderText="Room" />
 							<asp:BoundField DataField="MaxCapacity" HeaderText="Max Capacity" />
 							<asp:BoundField DataField="RoomRate" HeaderText="Rate" 
@@ -101,18 +106,20 @@
 					<br />
 					<p id ="NotExistingCustomer" runat ="server" visible ="false">
 						No details found - please enter your information below.
-					</p>
-					<asp:Label ID="lblCustomerName" runat="server" Text="Name:  "></asp:Label> &nbsp &nbsp
-					<asp:TextBox ID="txtCustomerName" runat="server" validationgroup="RegisterNewCustomerValidation"></asp:TextBox>
-					<br />                                        			
-					<asp:Label ID="lblCustomerPhone" runat="server" Text="Telephone:  "></asp:Label> &nbsp &nbsp
-					<asp:TextBox ID="txtCustomerPhone" runat="server" validationgroup="RegisterNewCustomerValidation"></asp:TextBox>
+					</p >
+					<asp:Label ID="lblCustomerName" runat="server" Text="Name:  " CssClass ="hidden"></asp:Label> &nbsp &nbsp
+					<asp:TextBox ID="txtCustomerName" runat="server" CssClass ="hidden"
+						validationgroup="RegisterNewCustomerValidation"></asp:TextBox> 
 					<br />
-					<asp:Label ID="lblCustomerCountry" runat="server" Text="Country"></asp:Label> &nbsp &nbsp
-					<asp:DropDownList ID="ddlCountry" runat="server">
-                        
+					<asp:Label ID="lblCustomerPhone" runat="server" Text="Telephone:  " CssClass="hidden"></asp:Label> &nbsp &nbsp
+					<asp:TextBox ID="txtCustomerPhone" runat="server" CssClass="hidden"
+						validationgroup="RegisterNewCustomerValidation"></asp:TextBox>
+					<br />
+					<asp:Label ID="lblCustomerCountry" runat="server" Text="Country" CssClass="hidden"></asp:Label> &nbsp &nbsp
+					<asp:DropDownList ID="ddlCountry" runat="server" CssClass="hidden">                        
 					</asp:DropDownList>
-					<br />
+					<br />			
+					
 					
 					<asp:Button ID="MakeBooking" runat="server" Text="Make Booking" OnClick="MakeBooking_Click"  />
 					<p id ="NothingSelected" runat="server" visible="false">No dates or rooms selected - please try again</p>

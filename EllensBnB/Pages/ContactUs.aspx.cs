@@ -19,6 +19,7 @@ namespace EllensBnB.Pages
 		List<BookingElement> userSelectedBookingElements = new List<BookingElement>();
 		int bookingID = 0;
 		string customerEmail;
+		bool existingCustomer = false;
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
@@ -140,17 +141,35 @@ namespace EllensBnB.Pages
 			var customer = DBMethods.CheckExistingCustomer(email);
 			if (customer.GetType() == typeof(string))
 			{
+				existingCustomer = false;
 				NotExistingCustomer.Visible = true;
+				lblCustomerName.CssClass = "show";
+				txtCustomerName.Text = string.Empty;
+				txtCustomerName.CssClass = "show";
+				lblCustomerPhone.CssClass = "show";
+				txtCustomerPhone.Text = string.Empty;
+				txtCustomerPhone.CssClass = "show";
+				lblCustomerCountry.CssClass = "show";
+				ddlCountry.SelectedIndex = 0;
+				ddlCountry.CssClass = "show";
+				UpdatePanelRegisterNewCustomer.Update();
 			}
 			else
 			{
 				if (IsPostBack)
 				{
 					NotExistingCustomer.Visible = false;
+					existingCustomer = true;
 					txtCustomerName.Text = customer.CustomerName.ToString();
 					txtCustomerPhone.Text = customer.CustomerPhone.ToString();
 					//ddlCountry.SelectedIndex = ddlCountry.Items.IndexOf(ddlCountry.Items.FindByValue(customer.CustomerCountry));
 					ddlCountry.SelectedValue = customer.CustomerCountry;
+					lblCustomerName.CssClass = "show";
+					txtCustomerName.CssClass = "show";
+					lblCustomerPhone.CssClass = "show";
+					txtCustomerPhone.CssClass = "show";
+					lblCustomerCountry.CssClass = "show";
+					ddlCountry.CssClass = "show";
 				}
 			}
 
@@ -190,9 +209,12 @@ namespace EllensBnB.Pages
 			string country = ddlCountry.SelectedValue.ToString();
 			string name = txtCustomerName.Text.ToString();
 
-
 			if (userSelectedBookingElements.Count > 0)
 			{
+				if (existingCustomer == false)
+				{
+					DBMethods.CreateNewCustomer(customerEmail, country, name, phone);
+				}
 				bookingID = DBMethods.CreateBookingID(customerEmail, txtCustomerBookingNotes.Text);
 				BookingElement.AddingBookingIDToBookingElements(bookingID, ref userSelectedBookingElements);
 				DBMethods.CreateBookingElements(userSelectedBookingElements);
