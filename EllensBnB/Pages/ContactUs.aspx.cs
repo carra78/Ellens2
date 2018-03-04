@@ -23,7 +23,10 @@ namespace EllensBnB.Pages
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			BindXml();
+			if (!IsPostBack)
+			{
+				BindXml();
+			}
 		}
 
 		protected void MakeNewReservation_Click(object sender, EventArgs e)
@@ -137,100 +140,138 @@ namespace EllensBnB.Pages
 
 		protected void btnCheckExisting_Click(object sender, EventArgs e)
 		{
-			string email = txtEmail.Text.ToString();
-			var customer = DBMethods.CheckExistingCustomer(email);
-			if (customer.GetType() == typeof(string))
+			Page.Validate("CustomerCheck");
+			if (Page.IsValid)
 			{
-				existingCustomer = false;
-				NotExistingCustomer.Visible = true;
-				lblCustomerName.CssClass = "show";
-				txtCustomerName.Text = string.Empty;
-				txtCustomerName.CssClass = "show";
-				lblCustomerPhone.CssClass = "show";
-				txtCustomerPhone.Text = string.Empty;
-				txtCustomerPhone.CssClass = "show";
-				lblCustomerCountry.CssClass = "show";
-				ddlCountry.SelectedIndex = 0;
-				ddlCountry.CssClass = "show";
-				MakeBooking.CssClass = "show";
-				UpdatePanelRegisterNewCustomer.Update();
-			}
-			else
-			{
-				if (IsPostBack)
+
+				string email = txtEmail.Text.ToString();
+				var customer = DBMethods.CheckExistingCustomer(email);
+				if (customer.GetType() == typeof(string))
 				{
-					NotExistingCustomer.Visible = false;
-					existingCustomer = true;
-					txtCustomerName.Text = customer.CustomerName.ToString();
-					txtCustomerPhone.Text = customer.CustomerPhone.ToString();
-					//ddlCountry.SelectedIndex = ddlCountry.Items.IndexOf(ddlCountry.Items.FindByValue(customer.CustomerCountry));
-					ddlCountry.SelectedValue = customer.CustomerCountry;
+					existingCustomer = false;
+					NotExistingCustomer.Visible = true;
 					lblCustomerName.CssClass = "show";
+					txtCustomerName.Text = string.Empty;
 					txtCustomerName.CssClass = "show";
 					lblCustomerPhone.CssClass = "show";
+					txtCustomerPhone.Text = string.Empty;
 					txtCustomerPhone.CssClass = "show";
 					lblCustomerCountry.CssClass = "show";
+					ddlCountry.SelectedIndex = 0;
 					ddlCountry.CssClass = "show";
 					MakeBooking.CssClass = "show";
-					
+					UpdatePanelRegisterNewCustomer.Update();
 				}
-			}
-
-		}
-
-		protected void MakeBooking_Click(object sender, EventArgs e)
-		{
-			//Retrieve date from the gridview and create new BookingElement List
-
-			foreach (GridViewRow row in gvAvailability.Rows)
-			{
-				CheckBox cb = (CheckBox)row.FindControl("cbxUserSelection");
-				if (cb != null && cb.Checked)
+				else
 				{
-					BookingElement b = new BookingElement();
-					b.ReservationDate = Convert.ToDateTime(gvAvailability.Rows[row.RowIndex].Cells[0].Text);
-					b.RoomID = Convert.ToInt32(gvAvailability.Rows[row.RowIndex].Cells[1].Text);
-					DropDownList dl = (DropDownList)row.FindControl("ddlUserGuests");
-					b.NumberOfGuests = Convert.ToInt32(dl.SelectedItem.Text);
-					userSelectedBookingElements.Add(b);
+					if (IsPostBack)
+					{
+						NotExistingCustomer.Visible = false;
+						existingCustomer = true;
+						txtCustomerName.Text = customer.CustomerName.ToString();
+						txtCustomerPhone.Text = customer.CustomerPhone.ToString();
+						//ddlCountry.SelectedIndex = ddlCountry.Items.IndexOf(ddlCountry.Items.FindByValue(customer.CustomerCountry));
+						ddlCountry.SelectedValue = customer.CustomerCountry;
+						lblCustomerName.CssClass = "show";
+						txtCustomerName.CssClass = "show";
+						lblCustomerPhone.CssClass = "show";
+						txtCustomerPhone.CssClass = "show";
+						lblCustomerCountry.CssClass = "show";
+						ddlCountry.CssClass = "show";
+						MakeBooking.CssClass = "show";
+
+					}
 				}
-			}
 
-			//add back in room rates for selected dates 
-			BookingElement.AddRoomRateByDate(currentRoomData, ref userSelectedBookingElements);
-
-			//Add any booking notes to each element			
-			if (!string.IsNullOrEmpty(txtCustomerBookingNotes.Text) &&
-				userSelectedBookingElements.Count > 0)
-			{
-				BookingElement.AddBookingNotesToBookingElements(txtCustomerBookingNotes.Text,
-					ref userSelectedBookingElements);
-			}
-
-			customerEmail = txtEmail.Text.ToString();
-			string phone = txtCustomerPhone.Text.ToString();
-			string country = ddlCountry.SelectedValue.ToString(); //TODO Validation to say can't select default item
-			string name = txtCustomerName.Text.ToString();
-
-			if (userSelectedBookingElements.Count > 0) //&& !string.IsNullOrEmpty(phone) 
-				//&& !string.IsNullOrEmpty(country) && !string.IsNullOrEmpty(name))
-			{
-				if (existingCustomer == false)
-				{
-					DBMethods.CreateNewCustomer(customerEmail, country, name, phone);
-				}
-				bookingID = DBMethods.CreateBookingID(customerEmail, txtCustomerBookingNotes.Text);
-				BookingElement.AddingBookingIDToBookingElements(bookingID, ref userSelectedBookingElements);
-				DBMethods.CreateBookingElements(userSelectedBookingElements);
-				
-				Session["BookingID"] = bookingID.ToString(); ;
-				Response.Redirect("BookingConfirm.aspx");
-				
 			}
 			else
 			{
-				NothingSelected.Visible = true;
+				NotExistingCustomer.Visible = false;
+				lblCustomerName.CssClass = "hidden";
+				txtCustomerName.Text = string.Empty;
+				txtCustomerName.CssClass = "hidden";
+				lblCustomerPhone.CssClass = "hidden";
+				txtCustomerPhone.Text = string.Empty;
+				txtCustomerPhone.CssClass = "hidden";
+				lblCustomerCountry.CssClass = "hidden";
+				ddlCountry.SelectedIndex = 0;
+				ddlCountry.CssClass = "hidden";
+				MakeBooking.CssClass = "hidden";
+				UpdatePanelRegisterNewCustomer.Update();
 			}
+		}
+		protected void MakeBooking_Click(object sender, EventArgs e)
+		{
+			Page.Validate("CustomerDetails");
+			if (Page.IsValid)
+			{
+				//Retrieve date from the gridview and create new BookingElement List
+
+				foreach (GridViewRow row in gvAvailability.Rows)
+				{
+					CheckBox cb = (CheckBox)row.FindControl("cbxUserSelection");
+					if (cb != null && cb.Checked)
+					{
+						BookingElement b = new BookingElement();
+						b.ReservationDate = Convert.ToDateTime(gvAvailability.Rows[row.RowIndex].Cells[0].Text);
+						b.RoomID = Convert.ToInt32(gvAvailability.Rows[row.RowIndex].Cells[1].Text);
+						DropDownList dl = (DropDownList)row.FindControl("ddlUserGuests");
+						b.NumberOfGuests = Convert.ToInt32(dl.SelectedItem.Text);
+						userSelectedBookingElements.Add(b);
+					}
+				}
+
+				//add back in room rates for selected dates 
+				BookingElement.AddRoomRateByDate(currentRoomData, ref userSelectedBookingElements);
+
+				//Add any booking notes to each element			
+				if (!string.IsNullOrEmpty(txtCustomerBookingNotes.Text) &&
+					userSelectedBookingElements.Count > 0)
+				{
+					BookingElement.AddBookingNotesToBookingElements(txtCustomerBookingNotes.Text,
+						ref userSelectedBookingElements);
+				}
+
+				customerEmail = txtEmail.Text.ToString();
+				string phone = txtCustomerPhone.Text.ToString();
+				string country = ddlCountry.SelectedValue.ToString(); //TODO Validation to say can't select default item
+				string name = txtCustomerName.Text.ToString();
+
+				if (userSelectedBookingElements.Count > 0) //&& !string.IsNullOrEmpty(phone) 
+														   //&& !string.IsNullOrEmpty(country) && !string.IsNullOrEmpty(name))
+				{
+					if (existingCustomer == false)
+					{
+						DBMethods.CreateNewCustomer(customerEmail, country, name, phone);
+					}
+					bookingID = DBMethods.CreateBookingID(customerEmail, txtCustomerBookingNotes.Text);
+					BookingElement.AddingBookingIDToBookingElements(bookingID, ref userSelectedBookingElements);
+					DBMethods.CreateBookingElements(userSelectedBookingElements);
+
+					Session["BookingID"] = bookingID.ToString(); ;
+					Response.Redirect("BookingConfirm.aspx");
+
+				}
+				else
+				{
+					NothingSelected.Visible = true;
+				}
+			}
+			//else
+			//{
+			//	NotExistingCustomer.Visible = false;
+			//	lblCustomerName.CssClass = "hidden";
+			//	txtCustomerName.Text = string.Empty;
+			//	txtCustomerName.CssClass = "hidden";
+			//	lblCustomerPhone.CssClass = "hidden";
+			//	txtCustomerPhone.Text = string.Empty;
+			//	txtCustomerPhone.CssClass = "hidden";
+			//	lblCustomerCountry.CssClass = "hidden";
+			//	ddlCountry.SelectedIndex = 0;
+			//	ddlCountry.CssClass = "hidden";
+			//	MakeBooking.CssClass = "hidden";
+			//	UpdatePanelRegisterNewCustomer.Update();
+			//}
 
 		}
 

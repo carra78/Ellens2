@@ -17,7 +17,7 @@
 
 		.show 
 		{
-			display:block;
+			display: inline-block;
 		}
 	</style>
 </asp:Content>
@@ -99,30 +99,55 @@
 			
 			<asp:UpdatePanel ID="UpdatePanelRegisterNewCustomer" runat="server" UpdateMode="Conditional">
 				<ContentTemplate>
-					<asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
-					<asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<asp:Button ID="btnCheckExisting" runat="server" Text="Look Up Email"  Width="180px" OnClick="btnCheckExisting_Click" />
+					<asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>					
+					<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+						ControlToValidate="txtEmail" Display="Dynamic" 
+						ErrorMessage="Email address is required" ValidationGroup="CustomerCheck">*</asp:RequiredFieldValidator> &nbsp;
+					<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
+						ControlToValidate="txtEmail" Display="Dynamic" 
+						ErrorMessage="E-mail addresses must be in the format of name@domain.xyz." 
+						ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+						ValidationGroup="CustomerCheck">Invalid format!</asp:RegularExpressionValidator>
+					<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+						ControlToValidate="txtEmail" Display="Dynamic" 
+						ErrorMessage="Email address is required" ValidationGroup="CustomerDetails">*</asp:RequiredFieldValidator> &nbsp;
+					<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
+						ControlToValidate="txtEmail" Display="Dynamic" 
+						ErrorMessage="E-mail addresses must be in the format of name@domain.xyz." 
+						ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+						ValidationGroup="CustomerDetails">Invalid format!</asp:RegularExpressionValidator>
+					<asp:TextBox ID="txtEmail" runat="server"></asp:TextBox> &nbsp;
+					<asp:Button ID="btnCheckExisting" runat="server" Text="Look Up Email"  Width="180px" OnClick="btnCheckExisting_Click" ValidationGroup="CustomerCheck" />
 					<br />
 					<p id ="NotExistingCustomer" runat ="server" visible ="false">
 						No details found - please enter your information below.
 					</p >
-					<asp:Label ID="lblCustomerName" runat="server" Text="Name:  " CssClass ="hidden"></asp:Label> &nbsp &nbsp
-					<asp:TextBox ID="txtCustomerName" runat="server" CssClass ="hidden"
-						validationgroup="RegisterNewCustomerValidation"></asp:TextBox> 
+					<asp:Label ID="lblCustomerName" runat="server" Text="Name:  " CssClass ="hidden"></asp:Label>
+					
+					<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+						ErrorMessage="Name cannot be blank" Display="Dynamic"  
+						ControlToValidate="txtCustomerName" ValidationGroup="CustomerDetails">*</asp:RequiredFieldValidator> &nbsp &nbsp
+					<asp:TextBox ID="txtCustomerName" runat="server" CssClass ="hidden"></asp:TextBox> 
 					<br />
-					<asp:Label ID="lblCustomerPhone" runat="server" Text="Telephone:  " CssClass="hidden"></asp:Label> &nbsp &nbsp
-					<asp:TextBox ID="txtCustomerPhone" runat="server" CssClass="hidden"
-						validationgroup="RegisterNewCustomerValidation"></asp:TextBox>
+					<asp:Label ID="lblCustomerPhone" runat="server" Text="Telephone:  " CssClass="hidden"></asp:Label> 
+					
+					<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+						ErrorMessage="Phone cannot be blank" Display="Dynamic" 
+						ControlToValidate="txtCustomerPhone" ValidationGroup="CustomerDetails" >*</asp:RequiredFieldValidator> &nbsp &nbsp
+					<asp:TextBox ID="txtCustomerPhone" runat="server" CssClass="hidden"></asp:TextBox>
 					<br />
-					<asp:Label ID="lblCustomerCountry" runat="server" Text="Country" CssClass="hidden"></asp:Label> &nbsp &nbsp
+					<asp:Label ID="lblCustomerCountry" runat="server" Text="Country" CssClass="hidden"></asp:Label> 					
+					<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+						ErrorMessage="Please select a country" ControlToValidate="ddlCountry"
+						InitialValue ="NA" Display="Dynamic" ValidationGroup="CustomerDetails" >*</asp:RequiredFieldValidator> &nbsp &nbsp
 					<asp:DropDownList ID="ddlCountry" runat="server" CssClass="hidden">                        
 					</asp:DropDownList>
 					<br />			
 					
 					
 					<asp:Button ID="MakeBooking" runat="server" Text="Make Booking" 
-						CssClass ="hidden" OnClick="MakeBooking_Click"  />
+						CssClass ="hidden" OnClick="MakeBooking_Click" 
+						ValidationGroup ="CustomerDetails" />
 					<p id ="NothingSelected" runat="server" visible="false">No dates or rooms selected - please try again</p>
 				</ContentTemplate>
 
