@@ -36,6 +36,24 @@
 			<li>We are open all year round.</li>
 			<li>For excellent rates on Galway Accommodation look no further than the Ellen's B&amp;B Guesthouse.</li>
 		</ul>
+		<asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="RoomData" TypeName="EllensBnB.EllensCode.Room"></asp:ObjectDataSource>
+		<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
+			<Columns>
+				<asp:BoundField DataField="RoomName" HeaderText="Room Name" SortExpression="RoomName">
+				<HeaderStyle BackColor="#000066" ForeColor="White" />
+				</asp:BoundField>
+				<asp:BoundField DataField="MaxCapacity" HeaderText="Max No of Guests" SortExpression="MaxCapacity">
+				<HeaderStyle BackColor="#000066" ForeColor="White" />
+				</asp:BoundField>
+				<asp:BoundField DataField="RoomPriceSummer" DataFormatString="{0:c}" HeaderText="Summer Rate (1 April - 30 Sept)" SortExpression="RoomPriceSummer">
+				<HeaderStyle BackColor="#000066" ForeColor="White" />
+				</asp:BoundField>
+				<asp:BoundField DataField="RoomPriceWinter" DataFormatString="{0:c}" HeaderText="Winter Rate (1 Oct - 31 Mar)" SortExpression="RoomPriceWinter">
+				<HeaderStyle BackColor="#000066" ForeColor="White" />
+				</asp:BoundField>
+			</Columns>
+		</asp:GridView>
+		<!--
 		<table role="grid">
 			<thead>
 				<tr>
@@ -68,6 +86,7 @@
 				</tr>
 			</tbody>
 		</table>
+		-->
 		<ul>
 			<li>Regular check-in times are daily from 12pm - 6pm.</li>
 			<li>Breakfast is served from 7.30am weekdays and 7am weekends.</li>
