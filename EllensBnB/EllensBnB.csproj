@@ -277,6 +277,7 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Pages\AdminPage.aspx" />
+    <Content Include="Pages\BookingConfirm.aspx" />
     <Content Include="Pages\ContactUs.aspx" />
     <Content Include="Pages\Default.aspx" />
     <Content Include="Pages\DummyContactUs.aspx" />
@@ -419,6 +420,13 @@
     </Compile>
     <Compile Include="Pages\AdminPage.aspx.designer.cs">
       <DependentUpon>AdminPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BookingConfirm.aspx.cs">
+      <DependentUpon>BookingConfirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\BookingConfirm.aspx.designer.cs">
+      <DependentUpon>BookingConfirm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ContactUs.aspx.cs">
       <DependentUpon>ContactUs.aspx</DependentUpon>

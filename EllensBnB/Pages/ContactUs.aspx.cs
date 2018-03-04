@@ -152,6 +152,7 @@ namespace EllensBnB.Pages
 				lblCustomerCountry.CssClass = "show";
 				ddlCountry.SelectedIndex = 0;
 				ddlCountry.CssClass = "show";
+				MakeBooking.CssClass = "show";
 				UpdatePanelRegisterNewCustomer.Update();
 			}
 			else
@@ -170,6 +171,8 @@ namespace EllensBnB.Pages
 					txtCustomerPhone.CssClass = "show";
 					lblCustomerCountry.CssClass = "show";
 					ddlCountry.CssClass = "show";
+					MakeBooking.CssClass = "show";
+					
 				}
 			}
 
@@ -206,10 +209,11 @@ namespace EllensBnB.Pages
 
 			customerEmail = txtEmail.Text.ToString();
 			string phone = txtCustomerPhone.Text.ToString();
-			string country = ddlCountry.SelectedValue.ToString();
+			string country = ddlCountry.SelectedValue.ToString(); //TODO Validation to say can't select default item
 			string name = txtCustomerName.Text.ToString();
 
-			if (userSelectedBookingElements.Count > 0)
+			if (userSelectedBookingElements.Count > 0) //&& !string.IsNullOrEmpty(phone) 
+				//&& !string.IsNullOrEmpty(country) && !string.IsNullOrEmpty(name))
 			{
 				if (existingCustomer == false)
 				{
@@ -219,10 +223,16 @@ namespace EllensBnB.Pages
 				BookingElement.AddingBookingIDToBookingElements(bookingID, ref userSelectedBookingElements);
 				DBMethods.CreateBookingElements(userSelectedBookingElements);
 				BookingIDReference.InnerHtml = bookingID.ToString();
+
+				Session["BookingID"] = bookingID.ToString(); ;
+				Response.Redirect("BookingConfirm.aspx");
+				//UpdatePanelCalendar.Visible = false;
+				//UpdatePanelRegisterNewCustomer.Visible = false;
+				//UpdatePanelReturnAvailability.Visible = false;
 			}
 			else
 			{
-
+				NothingSelected.Visible = true;
 			}
 
 		}
@@ -235,8 +245,9 @@ namespace EllensBnB.Pages
 			foreach (XmlNode node in doc.SelectNodes("//country"))
 			{
 				//ddlCountry.Items.Add(new ListItem(node.InnerText, node.Attributes["code"].InnerText));
-				ddlCountry.Items.Add(new ListItem(node.InnerText));
+				ddlCountry.Items.Add(new ListItem(node.InnerText, node.InnerText));//text & value
 			}
+			ddlCountry.Items.Insert(0, new ListItem("Select Country", "NA"));
 		}
 	}
 }

@@ -121,21 +121,13 @@
 					<br />			
 					
 					
-					<asp:Button ID="MakeBooking" runat="server" Text="Make Booking" OnClick="MakeBooking_Click"  />
+					<asp:Button ID="MakeBooking" runat="server" Text="Make Booking" 
+						CssClass ="hidden" OnClick="MakeBooking_Click"  />
 					<p id ="NothingSelected" runat="server" visible="false">No dates or rooms selected - please try again</p>
 				</ContentTemplate>
 
 			</asp:UpdatePanel>
 
-			<asp:UpdatePanel ID="UpdatePanelBookingConfirmation" runat="server">
-				<ContentTemplate>
-					
-					<h2>Thank you for your reservation.</h2>
-					<p>Your booking reference number is: <span runat="server" id="BookingIDReference">0</span></p>
-					
-				</ContentTemplate>
-
-			</asp:UpdatePanel> 
 		</div>
 
 		</div>
