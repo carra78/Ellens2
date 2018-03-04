@@ -52,6 +52,7 @@ namespace EllensBnB.Pages
 				e.Cell.BackColor = System.Drawing.ColorTranslator.FromHtml("#4d88ff"); //bright blue
 				e.Cell.BorderColor = System.Drawing.ColorTranslator.FromHtml("#000066"); //navy
 			}
+			
 			Session["SelectedDates"] = userSelectedDate;
 		}
 

@@ -28,13 +28,7 @@
 	<div role ="main" id="leftcol">
         <asp:SiteMapPath ID="SiteMapPath1" Runat="server"></asp:SiteMapPath><br />
 
-		<div class="bookingOption">
-			<asp:Button ID="MakeNewReservation" runat="server" Text="Make New Reservation"
-				CssClass="bookingOption" Style="margin-right:100px" OnClick="MakeNewReservation_Click" />
-			<asp:Button ID="btnExistingBookingASP" runat="server" Text="Retrieve Existing Booking"
-				CssClass ="bookingOption" OnClick="btnExistingBookingASP_Click" />
-			
-		</div>
+		
 		<div id="panels">
 			<!--Default on all to be set to invisible-->
 			<!--Appear when user clicks Make New Reservation button-->
@@ -158,6 +152,16 @@
 		</div>
 	
 	<div role="complementary" id="rightcol"> 
+		<div >
+			
+			<!--<asp:Button ID="MakeNewReservation" runat="server" Text="Make New Reservation"
+				CssClass="bookingOption" Style="margin-right:100px" OnClick="MakeNewReservation_Click" />-->
+			<asp:Button ID="btnExistingBookingASP" runat="server" Text="Retrieve Existing Booking"
+				CssClass ="bookingOption" OnClick="btnExistingBookingASP_Click" />
+			<br />
+			<br />
+			
+		</div>
 		<!--
 		<form method="get">
 			<input class="search" type="search" name="keyword" id="keyword" placeholder="Search here..." >
@@ -168,6 +172,9 @@
 		<p>12 St Bridgets Terrace,</p>
 		<p>Galway.</p>
 		<p>Tel:+353(0)87 234 5678</p>
+
+		
+
 		<p><img runat="server" src="~/Content/caImages/tn/tripadvisor2016.jpg" width="200" height="150" alt="Trip Advisor Cert 2016"></p>
 		<p><img runat="server" src="~/Content/caImages/tn/tripadvisor2015.jpg" width="200" height="150" alt="Trip Advisor Cert 2015"></p>
 
