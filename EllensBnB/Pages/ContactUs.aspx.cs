@@ -100,11 +100,16 @@ namespace EllensBnB.Pages
 					((List<DateTime>)Session["SelectedDates"], currentRoomData);
 				BookingElement.AddRoomRateByDate(currentRoomData, ref sessionBookingElements);
 				BookingElement.AddAvailabilityToBookingElements(ref sessionBookingElements);
-				//List<BookingElement> availableBookingElements = 
+				
 				BookingElement.BookingElementsWithAvailability(ref sessionBookingElements);
-				if (sessionBookingElements.Count > 0)
+
+				//sort sessionBookingElements to date order
+				List<BookingElement> sortedBookingElements = sessionBookingElements
+					.OrderBy(o => o.UserDate).ToList();
+
+				if (sortedBookingElements.Count > 0)
 				{
-					gvAvailability.DataSource = sessionBookingElements;
+					gvAvailability.DataSource = sortedBookingElements;
 					gvAvailability.DataBind();
 					foreach (GridViewRow row in gvAvailability.Rows)
 					{
