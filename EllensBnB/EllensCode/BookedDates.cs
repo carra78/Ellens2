@@ -17,45 +17,45 @@ namespace EllensBnB.EllensCode
 			RoomID = roomID;
 		}
 
-		public static List<BookedDates> AvailabilityForSpecifiedRoom(int roomID)
-		{
-			List<BookedDates> bookedDates = DBMethods.GetDatesReserved();
-			var selectedRoomBookedDates = (from d in bookedDates
-										   where d.RoomID == roomID
-										   select d).ToList();
-			return selectedRoomBookedDates;
-		}
+		//public static List<BookedDates> AvailabilityForSpecifiedRoom(int roomID)
+		//{
+		//	List<BookedDates> bookedDates = DBMethods.GetDatesReserved();
+		//	var selectedRoomBookedDates = (from d in bookedDates
+		//								   where d.RoomID == roomID
+		//								   select d).ToList();
+		//	return selectedRoomBookedDates;
+		//}
 
 
-		public static List<DateTime> DatesRoomBookedForUserSelectedDates(List<BookedDates> roomBookedDates, List<DateTime> userSelectedDates)
-		{
-			List<DateTime> bookedDates = new List<DateTime>();
+		//public static List<DateTime> DatesRoomBookedForUserSelectedDates(List<BookedDates> roomBookedDates, List<DateTime> userSelectedDates)
+		//{
+		//	List<DateTime> bookedDates = new List<DateTime>();
 
-			foreach (var item in roomBookedDates)
-			{
-				var booked = (from d in userSelectedDates
-							  where d.Date == item.BookedDate
-							  select d).ToList();
-				foreach (var date in booked)
-				{
-					if (!bookedDates.Contains(date))
-					{
-						bookedDates.Add(date);
-					}
-				}
-			}
+		//	foreach (var item in roomBookedDates)
+		//	{
+		//		var booked = (from d in userSelectedDates
+		//					  where d.Date == item.BookedDate
+		//					  select d).ToList();
+		//		foreach (var date in booked)
+		//		{
+		//			if (!bookedDates.Contains(date))
+		//			{
+		//				bookedDates.Add(date);
+		//			}
+		//		}
+		//	}
 
-			return bookedDates;
-		}
+		//	return bookedDates;
+		//}
 
 
-		public override string ToString()
-		{
-			StringBuilder sb = new StringBuilder();
-			sb.Append(BookedDate.ToShortDateString());
-			sb.Append(" Room: ");
-			sb.Append(RoomID);
-			return sb.ToString();
-		}
+		//public override string ToString()
+		//{
+		//	StringBuilder sb = new StringBuilder();
+		//	sb.Append(BookedDate.ToShortDateString());
+		//	sb.Append(" Room: ");
+		//	sb.Append(RoomID);
+		//	return sb.ToString();
+		//}
 	}
 }

@@ -84,43 +84,43 @@ namespace EllensBnB.EllensCode
 		}
 
 		//call uspCreateBookingElements - Create one row in the table
-		public static void CreateBookingElements(int bookingID, int roomID, DateTime date, int guests, decimal rate)
-		{
-			SqlConnection dbConnection = new SqlConnection(connectionString);
-			SqlCommand cmdCreateBookingElements = new SqlCommand("uspCreateBookingElements", dbConnection);
-			cmdCreateBookingElements.CommandType = CommandType.StoredProcedure;
-			SqlParameter pBookingID = new SqlParameter("@BookingID", SqlDbType.Int);
-			cmdCreateBookingElements.Parameters.Add(pBookingID);
-			SqlParameter pRoomID = new SqlParameter("@RoomID", SqlDbType.Int);
-			cmdCreateBookingElements.Parameters.Add(pRoomID);
-			SqlParameter pDate = new SqlParameter("@DateReserved", SqlDbType.Date);
-			cmdCreateBookingElements.Parameters.Add(pDate);
-			SqlParameter pGuest = new SqlParameter("NumberOfGuests", SqlDbType.Int);
-			cmdCreateBookingElements.Parameters.Add(pGuest);
-			SqlParameter pRate = new SqlParameter("@RoomRate", SqlDbType.Decimal);
-			cmdCreateBookingElements.Parameters.Add(pRate);
-			try
-			{
-				dbConnection.Open();
-				pBookingID.Value = bookingID;
-				pRoomID.Value = roomID;
-				pDate.Value = date;
-				pGuest.Value = guests;
-				pRate.Value = rate;
-				cmdCreateBookingElements.ExecuteNonQuery();
+		//public static void CreateBookingElements(int bookingID, int roomID, DateTime date, int guests, decimal rate)
+		//{
+		//	SqlConnection dbConnection = new SqlConnection(connectionString);
+		//	SqlCommand cmdCreateBookingElements = new SqlCommand("uspCreateBookingElements", dbConnection);
+		//	cmdCreateBookingElements.CommandType = CommandType.StoredProcedure;
+		//	SqlParameter pBookingID = new SqlParameter("@BookingID", SqlDbType.Int);
+		//	cmdCreateBookingElements.Parameters.Add(pBookingID);
+		//	SqlParameter pRoomID = new SqlParameter("@RoomID", SqlDbType.Int);
+		//	cmdCreateBookingElements.Parameters.Add(pRoomID);
+		//	SqlParameter pDate = new SqlParameter("@DateReserved", SqlDbType.Date);
+		//	cmdCreateBookingElements.Parameters.Add(pDate);
+		//	SqlParameter pGuest = new SqlParameter("NumberOfGuests", SqlDbType.Int);
+		//	cmdCreateBookingElements.Parameters.Add(pGuest);
+		//	SqlParameter pRate = new SqlParameter("@RoomRate", SqlDbType.Decimal);
+		//	cmdCreateBookingElements.Parameters.Add(pRate);
+		//	try
+		//	{
+		//		dbConnection.Open();
+		//		pBookingID.Value = bookingID;
+		//		pRoomID.Value = roomID;
+		//		pDate.Value = date;
+		//		pGuest.Value = guests;
+		//		pRate.Value = rate;
+		//		cmdCreateBookingElements.ExecuteNonQuery();
 
-			}
-			catch (Exception)
-			{
+		//	}
+		//	catch (Exception)
+		//	{
 
-				throw;
-			}
-			finally
-			{
-				dbConnection.Close();
-			}
+		//		throw;
+		//	}
+		//	finally
+		//	{
+		//		dbConnection.Close();
+		//	}
 
-		}
+		//}
 
 		//call uspCreateBookingElements - Create one or many rows in the table
 		public static void CreateBookingElements(List<BookingElement> bookingElements)
@@ -167,80 +167,80 @@ namespace EllensBnB.EllensCode
 		}
 
 		//call uspRetrieveRoomRate - single date
-		public static decimal RetrieveRoomRate(int roomID, DateTime reservationDate)
-		{
-			SqlConnection dbConnection = new SqlConnection(connectionString);
-			decimal roomrate;
-			SqlCommand cmdRetrieveRoomRate = new SqlCommand("uspRetrieveRoomRate", dbConnection);
-			cmdRetrieveRoomRate.CommandType = CommandType.StoredProcedure;
-			SqlParameter pRoomID = new SqlParameter("@RoomID", SqlDbType.Int);
-			cmdRetrieveRoomRate.Parameters.Add(pRoomID);
-			SqlParameter pDate = new SqlParameter("@ReservationDate", SqlDbType.Date);
-			cmdRetrieveRoomRate.Parameters.Add(pDate);
+		//public static decimal RetrieveRoomRate(int roomID, DateTime reservationDate)
+		//{
+		//	SqlConnection dbConnection = new SqlConnection(connectionString);
+		//	decimal roomrate;
+		//	SqlCommand cmdRetrieveRoomRate = new SqlCommand("uspRetrieveRoomRate", dbConnection);
+		//	cmdRetrieveRoomRate.CommandType = CommandType.StoredProcedure;
+		//	SqlParameter pRoomID = new SqlParameter("@RoomID", SqlDbType.Int);
+		//	cmdRetrieveRoomRate.Parameters.Add(pRoomID);
+		//	SqlParameter pDate = new SqlParameter("@ReservationDate", SqlDbType.Date);
+		//	cmdRetrieveRoomRate.Parameters.Add(pDate);
 
-			var pRoomRate = new SqlParameter("@RoomRate", SqlDbType.Decimal);
-			pRoomRate.Direction = ParameterDirection.ReturnValue;
-			cmdRetrieveRoomRate.Parameters.Add(pRoomRate);
+		//	var pRoomRate = new SqlParameter("@RoomRate", SqlDbType.Decimal);
+		//	pRoomRate.Direction = ParameterDirection.ReturnValue;
+		//	cmdRetrieveRoomRate.Parameters.Add(pRoomRate);
 
-			try
-			{
-				dbConnection.Open();
-				pRoomID.Value = roomID;
-				pDate.Value = reservationDate;
-				cmdRetrieveRoomRate.ExecuteNonQuery();
-				roomrate = decimal.Parse(pRoomRate.Value.ToString());
+		//	try
+		//	{
+		//		dbConnection.Open();
+		//		pRoomID.Value = roomID;
+		//		pDate.Value = reservationDate;
+		//		cmdRetrieveRoomRate.ExecuteNonQuery();
+		//		roomrate = decimal.Parse(pRoomRate.Value.ToString());
 
-			}
-			catch (Exception)
-			{
+		//	}
+		//	catch (Exception)
+		//	{
 
-				throw;
-			}
-			finally
-			{
-				dbConnection.Close();
-			}
+		//		throw;
+		//	}
+		//	finally
+		//	{
+		//		dbConnection.Close();
+		//	}
 
-			return roomrate;
-		}
+		//	return roomrate;
+		//}
 
 		//call uspRetrieveRoomRate - single date
-		public static void RetrieveRoomRate(ref List<RoomRateByDate> dates)
-		{
-			SqlConnection dbConnection = new SqlConnection(connectionString);
-			SqlCommand cmdRetrieveRoomRate = new SqlCommand("uspRetrieveRoomRate", dbConnection);
-			cmdRetrieveRoomRate.CommandType = CommandType.StoredProcedure;
-			SqlParameter pRoomID = new SqlParameter("@RoomID", SqlDbType.Int);
-			cmdRetrieveRoomRate.Parameters.Add(pRoomID);
-			SqlParameter pDate = new SqlParameter("@ReservationDate", SqlDbType.Date);
-			cmdRetrieveRoomRate.Parameters.Add(pDate);
+		//public static void RetrieveRoomRate(ref List<RoomRateByDate> dates)
+		//{
+		//	SqlConnection dbConnection = new SqlConnection(connectionString);
+		//	SqlCommand cmdRetrieveRoomRate = new SqlCommand("uspRetrieveRoomRate", dbConnection);
+		//	cmdRetrieveRoomRate.CommandType = CommandType.StoredProcedure;
+		//	SqlParameter pRoomID = new SqlParameter("@RoomID", SqlDbType.Int);
+		//	cmdRetrieveRoomRate.Parameters.Add(pRoomID);
+		//	SqlParameter pDate = new SqlParameter("@ReservationDate", SqlDbType.Date);
+		//	cmdRetrieveRoomRate.Parameters.Add(pDate);
 
-			var pRoomRate = new SqlParameter("@RoomRate", SqlDbType.Decimal);
-			pRoomRate.Direction = ParameterDirection.ReturnValue;
-			cmdRetrieveRoomRate.Parameters.Add(pRoomRate);
+		//	var pRoomRate = new SqlParameter("@RoomRate", SqlDbType.Decimal);
+		//	pRoomRate.Direction = ParameterDirection.ReturnValue;
+		//	cmdRetrieveRoomRate.Parameters.Add(pRoomRate);
 
-			try
-			{
-				dbConnection.Open();
-				foreach (var item in dates)
-				{
-					pRoomID.Value = item.RoomID;
-					pDate.Value = item.ReservationDate;
-					cmdRetrieveRoomRate.ExecuteNonQuery();
-					item.RoomRate = decimal.Parse(pRoomRate.Value.ToString());
+		//	try
+		//	{
+		//		dbConnection.Open();
+		//		foreach (var item in dates)
+		//		{
+		//			pRoomID.Value = item.RoomID;
+		//			pDate.Value = item.ReservationDate;
+		//			cmdRetrieveRoomRate.ExecuteNonQuery();
+		//			item.RoomRate = decimal.Parse(pRoomRate.Value.ToString());
 
-				}
+		//		}
 
-			}
-			catch (Exception)
-			{
-				throw;
-			}
-			finally
-			{
-				dbConnection.Close();
-			}
-		}
+		//	}
+		//	catch (Exception)
+		//	{
+		//		throw;
+		//	}
+		//	finally
+		//	{
+		//		dbConnection.Close();
+		//	}
+		//}
 
 
 		//calls uspCheckExistingCustomer

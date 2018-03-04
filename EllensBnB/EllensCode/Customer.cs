@@ -26,21 +26,21 @@ namespace EllensBnB.EllensCode
 		{
 		}
 
-		public override string ToString()
-		{
-			StringBuilder sb = new StringBuilder();
-			sb.Append(CustomerID);
-			sb.Append(", ");
-			sb.Append(CustomerEmail);
-			sb.Append(", ");
-			sb.Append(CustomerName);
-			sb.Append(", ");
-			sb.Append(CustomerCountry);
-			sb.Append(", ");
-			sb.Append(CustomerPhone);
+		//public override string ToString()
+		//{
+		//	StringBuilder sb = new StringBuilder();
+		//	sb.Append(CustomerID);
+		//	sb.Append(", ");
+		//	sb.Append(CustomerEmail);
+		//	sb.Append(", ");
+		//	sb.Append(CustomerName);
+		//	sb.Append(", ");
+		//	sb.Append(CustomerCountry);
+		//	sb.Append(", ");
+		//	sb.Append(CustomerPhone);
 
-			return sb.ToString();
+		//	return sb.ToString();
 
-		}
+		//}
 	}
 }

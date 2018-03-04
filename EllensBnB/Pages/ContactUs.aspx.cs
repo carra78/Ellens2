@@ -222,13 +222,10 @@ namespace EllensBnB.Pages
 				bookingID = DBMethods.CreateBookingID(customerEmail, txtCustomerBookingNotes.Text);
 				BookingElement.AddingBookingIDToBookingElements(bookingID, ref userSelectedBookingElements);
 				DBMethods.CreateBookingElements(userSelectedBookingElements);
-				BookingIDReference.InnerHtml = bookingID.ToString();
-
+				
 				Session["BookingID"] = bookingID.ToString(); ;
 				Response.Redirect("BookingConfirm.aspx");
-				//UpdatePanelCalendar.Visible = false;
-				//UpdatePanelRegisterNewCustomer.Visible = false;
-				//UpdatePanelReturnAvailability.Visible = false;
+				
 			}
 			else
 			{

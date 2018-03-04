@@ -128,10 +128,10 @@ namespace EllensBnB.EllensCode
 			}
 		}
 
-		public static List<BookingElement> RetrieveBookingDetails(string email, string bookingID)
-		{
-			List<BookingElement> existingBooking = DBMethods.RetrieveExistingBooking(email, Convert.ToInt32(bookingID));
-			return existingBooking;
-		}
+		//public static List<BookingElement> RetrieveBookingDetails(string email, string bookingID)
+		//{
+		//	List<BookingElement> existingBooking = DBMethods.RetrieveExistingBooking(email, Convert.ToInt32(bookingID));
+		//	return existingBooking;
+		//}
 	}
 }
