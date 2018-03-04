@@ -13,7 +13,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 	<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-    <div class="ExistingBooking">
+    <div class="existingBooking">
 		<asp:UpdatePanel ID ="inputFields" runat ="server" UpdateMode="Conditional">
 			<ContentTemplate>
 				<p><strong>Retrieve Existing Booking Details</strong></p>
@@ -25,7 +25,7 @@
 				<asp:TextBox ID="txtBookingID" runat="server"></asp:TextBox>
    
 				<p>
-					<asp:Button ID="btnRetrieveBooking" runat="server" Text="Retrieve Booking" OnClick="btnRetrieveBooking_Click" />
+					<asp:Button ID="btnRetrieveBooking" runat="server" Text="Retrieve Booking" CssClass="existingBooking" OnClick="btnRetrieveBooking_Click" />
 				 </p>
 
 			</ContentTemplate>
@@ -46,7 +46,7 @@
 				BookingNotes:&nbsp &nbsp <asp:Label runat="server" ID="lblRetrieveBookingNotes"></asp:Label> <br />
 			
                 
-			<asp:GridView ID="gvRetrieveBooking" runat="server" CssClass="RetrieveBooking" AutoGenerateColumns ="false">
+			<asp:GridView ID="gvRetrieveBooking" runat="server" CssClass="existingBooking" AutoGenerateColumns ="false">
 				<Columns>
 					<asp:BoundField DataField ="ReservationDate" HeaderText="Reservation Date" DataFormatString="{0:d}" />
 					<asp:BoundField DataField="RoomName" HeaderText="Room Reserved" />

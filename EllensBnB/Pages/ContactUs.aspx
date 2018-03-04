@@ -9,17 +9,7 @@
 	<meta name="keywords" content="best b and b;galway b&amp;b, great b&amp;bs in galway,cheap b&amp;bs in galway, galway guesthouses,
 	b&amp;bs near salthill galway,award winning,tripadvisor 2015,tripadvisor 2016">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style type="text/css">
-		.hidden
-		{
-			display: none;
-		}
-
-		.show 
-		{
-			display: inline-block;
-		}
-	</style>
+	
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -43,13 +33,13 @@
 					
 					<p class="bookingOption"><strong>Please select dates to check room availibility</strong></p>					
 					<asp:Calendar ID="EllensWebCalendar" runat="server" OnDayRender="EllensCalendar_DayRender" OnSelectionChanged="EllensCalendar_SelectionChanged" Width="835px"></asp:Calendar>
-					<asp:ListBox runat="server" ID="lstUserSelectedDates" Width="260px"></asp:ListBox>
+					<asp:ListBox runat="server" ID="lstUserSelectedDates" CssClass="listBox" Rows="4"></asp:ListBox>
 					
-					<asp:Button runat="server" Text="Select Dates" ID="btnSelectDates" OnClick="btnSelectDates_Click" />
+					<asp:Button runat="server" Text="Select Dates" CssClass="selectBtn" ID="btnSelectDates" OnClick="btnSelectDates_Click" />
 					&nbsp;&nbsp;
 					<asp:Button runat="server" Text="Clear Dates" ID="btnClearDates" OnClick="btnClearDates_Click" />
 					&nbsp;&nbsp;
-					<asp:Button ID="CheckAvailabilitySelectedDates" runat="server" Text="Check Availability" OnClick="CheckAvailabilitySelectedDates_Click" />
+					<asp:Button ID="CheckAvailabilitySelectedDates" runat="server" CssClass="availBtn" Text="Check Availability" OnClick="CheckAvailabilitySelectedDates_Click" />
 					<p id ="NoAvailability" runat="server" visible ="false">
 						Sorry - no rooms available on selected date(s) - Please try again
 					</p>
@@ -93,10 +83,10 @@
 			
 			<asp:UpdatePanel ID="UpdatePanelRegisterNewCustomer" runat="server" UpdateMode="Conditional">
 				<ContentTemplate>
-					<asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>					
+					<asp:Label ID="lblEmail" runat="server" CssClass="show" Text="Email: "></asp:Label>					
 					<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
 						ControlToValidate="txtEmail" Display="Dynamic" 
-						ErrorMessage="Email address is required" ValidationGroup="CustomerCheck">*</asp:RequiredFieldValidator> &nbsp;
+						ErrorMessage="Email address is required" ValidationGroup="CustomerCheck">*</asp:RequiredFieldValidator> 
 					<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" 
 						ControlToValidate="txtEmail" Display="Dynamic" 
 						ErrorMessage="E-mail addresses must be in the format of name@domain.xyz." 
@@ -104,36 +94,36 @@
 						ValidationGroup="CustomerCheck">Invalid format!</asp:RegularExpressionValidator>
 					<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
 						ControlToValidate="txtEmail" Display="Dynamic" 
-						ErrorMessage="Email address is required" ValidationGroup="CustomerDetails">*</asp:RequiredFieldValidator> &nbsp;
+						ErrorMessage="Email address is required" ValidationGroup="CustomerDetails">*</asp:RequiredFieldValidator> 
 					<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" 
 						ControlToValidate="txtEmail" Display="Dynamic" 
 						ErrorMessage="E-mail addresses must be in the format of name@domain.xyz." 
 						ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
 						ValidationGroup="CustomerDetails">Invalid format!</asp:RegularExpressionValidator>
-					<asp:TextBox ID="txtEmail" runat="server"></asp:TextBox> &nbsp;
-					<asp:Button ID="btnCheckExisting" runat="server" Text="Look Up Email"  Width="180px" OnClick="btnCheckExisting_Click" ValidationGroup="CustomerCheck" />
+					<asp:TextBox ID="txtEmail" runat="server" CssClass="show"></asp:TextBox> 
+					<asp:Button ID="btnCheckExisting" runat="server" Text="Look Up Email"  Width="150px" OnClick="btnCheckExisting_Click" ValidationGroup="CustomerCheck" />
 					<br />
 					<p id ="NotExistingCustomer" runat ="server" visible ="false">
 						No details found - please enter your information below.
 					</p >
-					<asp:Label ID="lblCustomerName" runat="server" Text="Name:  " CssClass ="hidden"></asp:Label>
+					<asp:Label ID="lblCustomerName" runat="server" Text="Name:" CssClass ="hidden" ></asp:Label>
 					
 					<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
 						ErrorMessage="Name cannot be blank" Display="Dynamic"  
-						ControlToValidate="txtCustomerName" ValidationGroup="CustomerDetails">*</asp:RequiredFieldValidator> &nbsp &nbsp
+						ControlToValidate="txtCustomerName" ValidationGroup="CustomerDetails">*</asp:RequiredFieldValidator> 
 					<asp:TextBox ID="txtCustomerName" runat="server" CssClass ="hidden"></asp:TextBox> 
 					<br />
-					<asp:Label ID="lblCustomerPhone" runat="server" Text="Telephone:  " CssClass="hidden"></asp:Label> 
+					<asp:Label ID="lblCustomerPhone" runat="server" Text="Telephone:" CssClass="hidden" ></asp:Label> 
 					
 					<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
 						ErrorMessage="Phone cannot be blank" Display="Dynamic" 
-						ControlToValidate="txtCustomerPhone" ValidationGroup="CustomerDetails" >*</asp:RequiredFieldValidator> &nbsp &nbsp
+						ControlToValidate="txtCustomerPhone" ValidationGroup="CustomerDetails" >*</asp:RequiredFieldValidator> 
 					<asp:TextBox ID="txtCustomerPhone" runat="server" CssClass="hidden"></asp:TextBox>
 					<br />
-					<asp:Label ID="lblCustomerCountry" runat="server" Text="Country" CssClass="hidden"></asp:Label> 					
+					<asp:Label ID="lblCustomerCountry" runat="server" Text="Country:" CssClass="hidden"></asp:Label> 					
 					<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
 						ErrorMessage="Please select a country" ControlToValidate="ddlCountry"
-						InitialValue ="NA" Display="Dynamic" ValidationGroup="CustomerDetails" >*</asp:RequiredFieldValidator> &nbsp &nbsp
+						InitialValue ="NA" Display="Dynamic" ValidationGroup="CustomerDetails" >*</asp:RequiredFieldValidator> 
 					<asp:DropDownList ID="ddlCountry" runat="server" CssClass="hidden">                        
 					</asp:DropDownList>
 					<br />			
@@ -154,25 +144,17 @@
 	<div role="complementary" id="rightcol"> 
 		<div >
 			
-			<!--<asp:Button ID="MakeNewReservation" runat="server" Text="Make New Reservation"
-				CssClass="bookingOption" Style="margin-right:100px" OnClick="MakeNewReservation_Click" />-->
+			<br /><br />
 			<asp:Button ID="btnExistingBookingASP" runat="server" Text="Retrieve Existing Booking"
-				CssClass ="bookingOption" OnClick="btnExistingBookingASP_Click" />
-			<br />
+				CssClass ="retrieveBooking" OnClick="btnExistingBookingASP_Click" />
 			<br />
 			
 		</div>
-		<!--
-		<form method="get">
-			<input class="search" type="search" name="keyword" id="keyword" placeholder="Search here..." >
-			<input class="search" type="submit" value="Go">
-
-		</form> -->
+		
 		<h3>Ellen Smith Bed &amp; Breakfast</h3>
 		<p>12 St Bridgets Terrace,</p>
 		<p>Galway.</p>
 		<p>Tel:+353(0)87 234 5678</p>
-
 		
 
 		<p><img runat="server" src="~/Content/caImages/tn/tripadvisor2016.jpg" width="200" height="150" alt="Trip Advisor Cert 2016"></p>

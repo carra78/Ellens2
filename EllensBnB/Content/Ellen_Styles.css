@@ -162,37 +162,6 @@ main {
     cursor: default;
     overflow: hidden;
 }
-/*#topnav li li {font-size: 90%; text-align:left;
-}
-	Discuss with Karen - does this need to be removed
-*/
-
-/*skip to maincontent styles*/
-/*TODO delete skipContent styles*/
-/*#skiptocontent a {
-	padding:6px;
-	position: absolute;
-	top:-40px;
-	left:0px;
-	color:#ffffff;
-	border-right:1px solid white;
-	border-bottom:1px solid white;
-	border-bottom-right-radius:8px;
-	background:transparent;
-	-webkit-transition: top 1s ease-out, background 1s linear;
-    transition: top 1s ease-out, background 1s linear;
-    z-index: 100;
-}
-
-#skiptocontent a:focus {
-	position:absolute;
-	left:0px;
-	top:0px;
-	background:#4d88ff;
-	outline:0;	
-	-webkit-transition: top .1s ease-in, background .5s linear;
-    transition: top .1s ease-in, background .5s linear;
-}*/
 
 /*Scrolling top button styles*/
 #topBtn {
@@ -309,29 +278,6 @@ h4 {
         opacity: 1
     }
 }
-/*containers*/
-/*div.polaroid {display:inline-block;
-			max-width:310px;
-			width:100%;
-			height:auto;
-			Padding:8px 10px 8px 10px;
-			margin-right:7px;  
-			background-color: white;
-			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			margin-bottom:10px;
-}
-
-button.container {display:inline-block;
-   	background-color: #ccf2ff;
-    color: #000066;
-    cursor: pointer;
-    padding: 10px;
-	max-width:290px;
-    width:100%;
-    text-align: center;
-    font-size: 15px;
-    transition: 0.4s;
-}
 
 button.container:active, button.container:hover {
     background-color: #4d88ff;
@@ -355,7 +301,7 @@ div.panel {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-}*/
+}
 /*attempt to fix containers*/
 .polaroid {
     display: inline-block;
@@ -507,15 +453,7 @@ thead {
     cursor: pointer;
 }
 
-/*Contact Us - Form styles*/
 
-/*fieldset		{Margin-top:20px;
-				max-width:650px;
-				width:50%}*/
-
-
-/*legend			{font-size:100%;
-				}*/
 label.field {
     text-align: left;
     max-width: 100px;
@@ -524,109 +462,18 @@ label.field {
     font-size: small;
 }
 
-/*TODO delete input required styles*/
-/*input:required[type=text],input[type=text],input:required[type=email],input:required[type=tel],input:required[type=range],
-input[type=date],select, textarea 
-	{max-width: 500px; 
-	padding: 5px; 
-    border: 1px solid #4d88ff; 
-    border-radius: 4px; 
-    margin-top: 1px; 
-    margin-bottom: 1px; 
-	resize: vertical*/
 
-    /* Allow the user to vertically resize the textarea (not horizontally) */
-
-
-/*Input[type=range].range {max-width:400px;width:50%;padding:5px 10px 5px 10px;}
-Input[type=range] p {margin:10px}*/
 
 label span, .required {
     color: red;
 }
-/*fieldset p {clear:both;}*/
 
-/*input[type=submit] {
-    background-color: #4d88ff;
-    color: white;
-    padding: 12px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-	margin:5px 5px 5px 0px;
-	font-size:50%;
-	border: 1px solid #ffffff;
-	box-shadow:1px 1px 1px #000066;
-}*/
-/*input[type=reset] {
-    background-color: #4d88ff;
-    color: white;
-    padding: 12px 12px;
-    border-radius: 4px;
-    Font-size:50%;
-	cursor: pointer;
-	border: 1px solid #ffffff;
-	box-shadow:1px 1px 1px #000066;
-	}*/
 
-/*Booking form styles*/
-/*fieldset.booking	{Margin-top:0px;
-					width:100%;
-					width:100%;
-					padding:5px;}
-legend.booking		{font-size:100%;}*/
 .booking {
     text-align: left;
     float: left;
     font-weight: bold;
 }
-/*fieldset p {clear:both;}*/
-
-/*input:required.booking[type=date],input:required.booking[type=email],input[type=search]
-	{width:90%;				
-	padding: 3px; 
-	border: 1px solid #4d88ff; 
-	border-radius: 4px; 
-	margin: 1px 0px 0px 1px; 
-	 }
-input.booking[type=submit]	{
-	background-color: #4d88ff;
-    color: white;
-    padding: 4px 4px;
-	font-size:75%;
-    border-radius: 4px;
-    cursor: pointer;
-	margin:0px 5px 0px 85px;
-	border: 1px solid #ffffff;
-	box-shadow:1px 1px 1px #000066;
-}
-input.booking[type=reset] {
-    background-color: #4d88ff;
-    color: white;
-    padding: 4px 4px;
-	font-size:75%;
-    border-radius: 4px;
-    cursor: pointer;
-	border: 1px solid #ffffff;
-	box-shadow:1px 1px 1px #000066;
-	}
-input.search[type=search] {	width:70%;
-							padding:4px;
-							margin: 30px 0px 10px 30px;}*/
-
-/*input[type=submit] {	 background-color: #4d88ff;
-							color: white;
-							padding: 4px 4px;
-							font-size:75%;
-							border-radius: 4px;
-							cursor: pointer;
-							margin:0px 5px 0px 10px;
-							border: 1px solid #ffffff;
-							box-shadow:1px 1px 1px #000066;}*/
-
-
-
-
-
 
 /*Google Map styling*/
 #map {
@@ -678,12 +525,7 @@ input.search[type=search] {	width:70%;
         max-height: 300px;
         height: 100%;
     }
-    /*fieldset.booking	{width:100%;}
-legend.booking		{font-size:130%;}*/
-    /*input:required.booking[type=date],input:required.booking[type=email],input[type=search]
-				{
-				width:100%;				
-				 }*/
+
     aside {
         max-width: 270px;
         width: 90%;
@@ -696,18 +538,11 @@ legend.booking		{font-size:130%;}*/
     #leftcol {
         width: 70%;
     }
-    /*fieldset		{width:100%}
-legend			{font-size:150%;
-				}*/
+  
     label.field {
         width: 100%;
     }
-    /*input:required[type=text],input[type=text],input:required[type=email],input:required[type=tel],input:required[type=range],
-input[type=date],select, textarea 
-	{width:100%;
-   }	*/
-    /*Input[type=range].range {width:100%;}*/
-    /*input[type=submit],input[type=reset]{font-size:100%;}*/
+  
 
     label.field {
         font-weight: bold;
@@ -721,8 +556,6 @@ input[type=date],select, textarea
         border-radius: 10px;
     }
 }
-
-
 
 
 /*AdminPage Css*/
@@ -776,7 +609,6 @@ input[type=date],select, textarea
     float: left;
     position: relative;
 }
-
 input[type=submit] {
     background-color: #4d88ff;
     color: white;
@@ -789,6 +621,45 @@ input[type=submit] {
     box-shadow: 1px 1px 1px #000066;
 }
 
+
+.listBox{
+    width:260px;
+    margin-top:10px;
+}
+input[type=submit].selectBtn {
+    margin-left: 20px;
+}
+
+input[type=submit].availBtn {
+    margin-left: 0px;
+    margin-bottom:10px;
+}
+.hidden {
+    display: none;
+}
+
+.show {
+    display: inline-block;
+    width:150px;
+    margin-left:0px;
+    margin-bottom:3px;
+ 
+}
+input[type=submit].show {
+    margin-left: 0px;
+}
+
+input[type=submit].retrieveBooking {
+    margin: 20px 0px 10px 40px;
+}
+
+
+/*BookingConfirmation*/
+.bookingConfirm{
+    margin-left:10px;
+}
+
+
 /*Login Css*/
 .login
 {
@@ -796,7 +667,7 @@ input[type=submit] {
 }
 
 /*Existing Booking Css*/
-.ExistingBooking {
+.existingBooking {
     margin: 10px 10px 10px 100px;
 
 }
@@ -804,9 +675,8 @@ input[type=submit] {
     display:flex;
     float:left;
 }
-.RetrieveBooking
-{
-    margin-top:20px;
-    margin-left: 40px;
+input[type=submit].existingBooking {
+    margin: 20px 0px 10px 0px;
 }
+
 
